@@ -7,5 +7,8 @@ target 'TestingDatabase' do
 
   # Pods for TestingDatabase
   pod 'Firebase/Database'
+  
+  # Pod for google SSO
+  pod 'GoogleSignIn'
 end
 
