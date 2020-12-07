@@ -9,6 +9,8 @@
 import UIKit
 import FirebaseDatabase
 import FirebaseCore
+var Newevents:  [Event] = [] // arrays of events and names
+
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     func fetchEvent() { // fecthing event data
@@ -21,7 +23,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 let event = Event() // creating new event object
                 event.setValuesForKeys(dict) // set to dict
                 
-                self.Newevents.append(event)
+                Newevents.append(event)
                 self.arrayname.append(event.Eventname ?? "sorry")
                 self.Tabledata.reloadData()
                 DispatchQueue.global(qos: .userInitiated).async {
@@ -36,7 +38,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     var myarray = [String]()
-    var Newevents:  [Event] = [] // arrays of events and names
     var arrayname = [String]()
     var aname = [String]()
 // settuping table view
@@ -51,6 +52,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let event = Newevents[indexPath.row]
         mycell.textLabel?.text = event.Eventname
         mycell.detailTextLabel?.text = event.Links
+        print(event.Eventname!) // printing the names of events
         return mycell
         // displaying event name and info
     }
@@ -60,7 +62,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let ref = Database.database().reference().child("Events") // fetching data by events on database
         ref.observe(.childAdded) { (snapshot) in
             self.myarray = []
-            self.Newevents = []
+            Newevents = []
             self.arrayname = []
             self.aname = []
             Database.database().reference().child("Events").observe(.childAdded, with: { (snapshot) in
@@ -70,7 +72,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 if let dict = snapshot.value as? [String: AnyObject] {
                     let event = Event()
                     print("jvhjvjvhjvj  \(event.Eventname ?? "why")") // testing
-                    self.Newevents.append(event)
+                    Newevents.append(event)
                     self.arrayname.append(event.Eventname ?? "sorry") // testing
                     self.Tabledata.reloadData()
                     DispatchQueue.global(qos: .userInitiated).async {
@@ -86,7 +88,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
             }, withCancel: nil)
             print("aname somehting \(self.aname)")
 
-            print(self.Newevents)
+            print(Newevents)
             print(self.arrayname)
             var count = 0
             for x in snapshot.key {
@@ -111,6 +113,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var Tabledata: UITableView!
     
     override func viewDidLoad() {
+        self.fetchEvent()
+
         super.viewDidLoad()
         let ref = Database.database().reference()
         ref.child("Events").observe(.childAdded, with: {(snap) in
@@ -128,6 +132,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = .link
         view.addSubview(button)
+
         button.addTarget(self, action: #selector(addNew), for: .touchUpInside)
         // Do any additional setup after loading the view.
     }
@@ -155,7 +160,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         Tabledata.dataSource = self
         Tabledata.delegate = self
     }
-    
+
 
 }
 
