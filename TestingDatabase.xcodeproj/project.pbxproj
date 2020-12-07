@@ -26,9 +26,8 @@
 		8DFE656D257597F000E10FEE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DFE655C257597EE00E10FEE /* LaunchScreen.storyboard */; };
 		8DFE656E257597F000E10FEE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DFE655D257597EE00E10FEE /* Main.storyboard */; };
 		8DFE656F257597F000E10FEE /* ConnectionDetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFE655E257597EF00E10FEE /* ConnectionDetailedViewController.swift */; };
-		8DFE6570257597F000E10FEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DFE655F257597EF00E10FEE /* Assets.xcassets */; };
 		8DFE6571257597F000E10FEE /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFE6560257597F000E10FEE /* EventViewController.swift */; };
-		8DFE6572257597F000E10FEE /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8DFE6561257597F000E10FEE /* Info.plist */; };
+		F8D9DE02257ED047002FB194 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8D9DE01257ED047002FB194 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,10 +52,10 @@
 		8DFE655C257597EE00E10FEE /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8DFE655D257597EE00E10FEE /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		8DFE655E257597EF00E10FEE /* ConnectionDetailedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionDetailedViewController.swift; sourceTree = "<group>"; };
-		8DFE655F257597EF00E10FEE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "../../../Downloads/SafeConnect-2/SafeConnect/SafeConnect/Assets.xcassets"; sourceTree = "<group>"; };
 		8DFE6560257597F000E10FEE /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		8DFE6561257597F000E10FEE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../../../Downloads/SafeConnect-2/SafeConnect/SafeConnect/Info.plist"; sourceTree = "<group>"; };
 		AA654B14923CBCAFE7FA07A7 /* Pods-TestingDatabase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestingDatabase.debug.xcconfig"; path = "Target Support Files/Pods-TestingDatabase/Pods-TestingDatabase.debug.xcconfig"; sourceTree = "<group>"; };
+		F8D9DE01257ED047002FB194 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +103,6 @@
 				8D5A370D2563971800451664 /* SceneDelegate.swift */,
 				8D5A370F2563971800451664 /* ViewController.swift */,
 				8DFE655A257597ED00E10FEE /* AddEventViewController.swift */,
-				8DFE655F257597EF00E10FEE /* Assets.xcassets */,
 				8DFE6558257597EC00E10FEE /* Connection.swift */,
 				8DFE655E257597EF00E10FEE /* ConnectionDetailedViewController.swift */,
 				8DFE6553257597E900E10FEE /* ConnectionsViewController.swift */,
@@ -121,6 +119,7 @@
 				8DFE6557257597EB00E10FEE /* ProfileViewController.swift */,
 				8DFE6554257597E900E10FEE /* TabBarController.swift */,
 				8D5A371F2563984100451664 /* GoogleService-Info.plist */,
+				F8D9DE01257ED047002FB194 /* Assets.xcassets */,
 			);
 			path = TestingDatabase;
 			sourceTree = "<group>";
@@ -146,6 +145,7 @@
 				8D5A37052563971800451664 /* Frameworks */,
 				8D5A37062563971800451664 /* Resources */,
 				22EBBBCDB1F294BEE312C87C /* [CP] Embed Pods Frameworks */,
+				A45B267CC62DC38E4814715B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -196,9 +196,8 @@
 			files = (
 				8DFE656E257597F000E10FEE /* Main.storyboard in Resources */,
 				8D5A37202563984200451664 /* GoogleService-Info.plist in Resources */,
-				8DFE6570257597F000E10FEE /* Assets.xcassets in Resources */,
-				8DFE6572257597F000E10FEE /* Info.plist in Resources */,
 				8DFE656D257597F000E10FEE /* LaunchScreen.storyboard in Resources */,
+				F8D9DE02257ED047002FB194 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +241,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A45B267CC62DC38E4814715B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TestingDatabase/Pods-TestingDatabase-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TestingDatabase/Pods-TestingDatabase-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TestingDatabase/Pods-TestingDatabase-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
