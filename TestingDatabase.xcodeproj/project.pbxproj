@@ -13,7 +13,6 @@
 		8D5A37102563971800451664 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5A370F2563971800451664 /* ViewController.swift */; };
 		8D5A37202563984200451664 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8D5A371F2563984100451664 /* GoogleService-Info.plist */; };
 		8DFE6550256F208A00E10FEE /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFE654F256F208A00E10FEE /* Event.swift */; };
-		8DFE6562257597F000E10FEE /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFE6551257597E800E10FEE /* Event.swift */; };
 		8DFE6563257597F000E10FEE /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFE6552257597E800E10FEE /* EditProfileViewController.swift */; };
 		8DFE6564257597F000E10FEE /* ConnectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFE6553257597E900E10FEE /* ConnectionsViewController.swift */; };
 		8DFE6565257597F000E10FEE /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DFE6554257597E900E10FEE /* TabBarController.swift */; };
@@ -41,7 +40,6 @@
 		8D5A370F2563971800451664 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8D5A371F2563984100451664 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8DFE654F256F208A00E10FEE /* Event.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		8DFE6551257597E800E10FEE /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Event.swift; path = "../../../Downloads/SafeConnect-2/SafeConnect/SafeConnect/Event.swift"; sourceTree = "<group>"; };
 		8DFE6552257597E800E10FEE /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		8DFE6553257597E900E10FEE /* ConnectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionsViewController.swift; sourceTree = "<group>"; };
 		8DFE6554257597E900E10FEE /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -113,7 +111,6 @@
 				8DFE6555257597EA00E10FEE /* ConnectionViewCell.swift */,
 				8DFE6552257597E800E10FEE /* EditProfileViewController.swift */,
 				8DFE654F256F208A00E10FEE /* Event.swift */,
-				8DFE6551257597E800E10FEE /* Event.swift */,
 				8DFE6556257597EB00E10FEE /* EventDetailedViewController.swift */,
 				8DFE6559257597EC00E10FEE /* EventViewCell.swift */,
 				8DFE6560257597F000E10FEE /* EventViewController.swift */,
@@ -166,7 +163,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1150;
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = "Keith Nelson";
 				TargetAttributes = {
 					8D5A37072563971800451664 = {
@@ -268,7 +265,6 @@
 				8DFE6550256F208A00E10FEE /* Event.swift in Sources */,
 				8DFE656F257597F000E10FEE /* ConnectionDetailedViewController.swift in Sources */,
 				8DFE656B257597F000E10FEE /* AddEventViewController.swift in Sources */,
-				8DFE6562257597F000E10FEE /* Event.swift in Sources */,
 				8DFE6567257597F000E10FEE /* EventDetailedViewController.swift in Sources */,
 				8DFE6571257597F000E10FEE /* EventViewController.swift in Sources */,
 			);
@@ -303,6 +299,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -363,6 +360,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
