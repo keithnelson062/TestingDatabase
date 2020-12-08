@@ -33,7 +33,7 @@
 /* Begin PBXFileReference section */
 		17DD0EDDD91F498D85F59E28 /* Pods_TestingDatabase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TestingDatabase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		61E7E99E2561520D81340019 /* Pods-TestingDatabase.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestingDatabase.release.xcconfig"; path = "Target Support Files/Pods-TestingDatabase/Pods-TestingDatabase.release.xcconfig"; sourceTree = "<group>"; };
-		8D5A37082563971800451664 /* TestingDatabase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestingDatabase.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D5A37082563971800451664 /* SafeConnect.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SafeConnect.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D5A370B2563971800451664 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8D5A370D2563971800451664 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		8D5A370F2563971800451664 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -91,7 +91,7 @@
 		8D5A37092563971800451664 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D5A37082563971800451664 /* TestingDatabase.app */,
+				8D5A37082563971800451664 /* SafeConnect.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -153,7 +153,7 @@
 			);
 			name = TestingDatabase;
 			productName = TestingDatabase;
-			productReference = 8D5A37082563971800451664 /* TestingDatabase.app */;
+			productReference = 8D5A37082563971800451664 /* SafeConnect.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -417,7 +417,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Keith-Nelson.TestingDatabase";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SafeConnect;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -435,7 +435,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Keith-Nelson.TestingDatabase";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SafeConnect;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
