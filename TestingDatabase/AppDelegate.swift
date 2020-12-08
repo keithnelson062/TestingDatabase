@@ -11,6 +11,7 @@
 
 import UIKit
 import Firebase
+
 import GoogleSignIn
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
@@ -75,8 +76,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
       let familyName = user.profile.familyName
       let email = user.profile.email
       // ...
+        
     }
-
+// keep the userid
     // sign out by disconnect
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,
               withError error: Error!) {

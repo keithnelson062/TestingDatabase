@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import FirebaseDatabase
 class AddEventViewController: UIViewController {
 
     
@@ -23,12 +23,31 @@ class AddEventViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
-    
+    //self.ref.child("users").child(user.uid).setValue(["username": username]) for adding users
+
     
     @IBAction func addEvent(_ sender: Any) {
+        //let userID = Auth.auth().currentUser?.uid
+
+        let database = Database.database().reference()
+
+        let event : [String:Any] = [
+        "Eventname" : nameField.text ?? "something2",
+        "Photo_add" : "photo_link",
+        "Links" : "websites",
+        "Date": datePicker.date,
+        "Summary" : descField.text!, // to be replaced with input text fields
+        "Date_Time": [".sv": "timestamp"],
+        "Location": locationField.text ?? "something",
+        "Event_id" : "event_id"
+                ]
+
+        database.child("Events").childByAutoId().setValue(event)
+       // database.child("Events").child(userid).setValue(event)
+    // find user id string
     }
     
-
+// self.ref.child("users/\(user.uid)/username").setValue(username) for changing and updating usernames and profile info
     /*
     // MARK: - Navigation
 
