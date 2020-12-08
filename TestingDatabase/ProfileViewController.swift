@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import GoogleSignIn
 class ProfileViewController: UIViewController, UITableViewDataSource {
 
     @IBOutlet weak var profileImage: UIImageView!
@@ -22,6 +22,9 @@ class ProfileViewController: UIViewController, UITableViewDataSource {
         super.viewDidLoad()
         tableView.dataSource = self
         // Do any additional setup after loading the view.
+    }
+    @IBAction func signout(_ sender: Any) {
+        GIDSignIn.sharedInstance().signOut()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

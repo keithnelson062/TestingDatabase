@@ -11,7 +11,7 @@
         <!--Login View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="SafeConnect" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="TestingDatabase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -34,10 +34,18 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.48958701844042929" green="0.74222321602433006" blue="0.82554727157360408" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t4d-8Q-q4f" customClass="GIDSignInButton">
+                                <rect key="frame" x="81" y="622" width="212" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.84892767670000002" green="0.99592190979999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="test" destination="t4d-8Q-q4f" id="oiH-Fn-hLw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -46,7 +54,7 @@
         <!--My Profile-->
         <scene sceneID="cAQ-AA-bVC">
             <objects>
-                <viewController title="My Profile" id="zOy-y0-YOM" customClass="ProfileViewController" customModule="SafeConnect" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="My Profile" id="zOy-y0-YOM" customClass="ProfileViewController" customModule="TestingDatabase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="1ad-Ee-JAs">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -108,6 +116,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bmf-Cl-G3n" customClass="GIDSignInButton">
+                                <rect key="frame" x="87" y="695" width="202" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <action selector="signout:" destination="zOy-y0-YOM" eventType="valueChanged" id="jgw-tn-i9S"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="V23-0t-4sQ"/>
@@ -130,7 +146,7 @@
         <!--Edit Profile View Controller-->
         <scene sceneID="Kdg-M4-JWK">
             <objects>
-                <viewController id="hJ0-rp-NcC" customClass="EditProfileViewController" customModule="SafeConnect" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="hJ0-rp-NcC" customClass="EditProfileViewController" customModule="TestingDatabase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="atF-fl-MlR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -209,7 +225,7 @@
         <!--Connections-->
         <scene sceneID="gJ3-so-vcw">
             <objects>
-                <viewController title="Connections" id="y5A-2f-bVM" customClass="ConnectionsViewController" customModule="SafeConnect" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Connections" id="y5A-2f-bVM" customClass="ConnectionsViewController" customModule="TestingDatabase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="r60-mF-nsd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -233,7 +249,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="connectionCell" id="ba5-2c-QJS" customClass="ConnectionViewCell" customModule="SafeConnect" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="connectionCell" id="ba5-2c-QJS" customClass="ConnectionViewCell" customModule="TestingDatabase" customModuleProvider="target">
                                         <rect key="frame" x="2" y="0.0" width="353" height="130"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Vft-z8-Q6i">
@@ -278,7 +294,7 @@
         <!--Connection Detailed View Controller-->
         <scene sceneID="1Tt-xJ-gjO">
             <objects>
-                <viewController id="nPf-A1-axe" customClass="ConnectionDetailedViewController" customModule="SafeConnect" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="nPf-A1-axe" customClass="ConnectionDetailedViewController" customModule="TestingDatabase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="FOa-bW-zhd">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -359,7 +375,7 @@
         <!--Add Event View Controller-->
         <scene sceneID="fQ8-OW-1p4">
             <objects>
-                <viewController id="TFA-gj-bc9" customClass="AddEventViewController" customModule="SafeConnect" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="TFA-gj-bc9" customClass="AddEventViewController" customModule="TestingDatabase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="G35-cc-UpD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -459,7 +475,7 @@
         <!--Event Feed-->
         <scene sceneID="wGT-Ql-JmF">
             <objects>
-                <viewController title="Event Feed" id="KhE-GL-GLC" customClass="EventViewController" customModule="SafeConnect" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Event Feed" id="KhE-GL-GLC" customClass="EventViewController" customModule="TestingDatabase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Aur-EL-h5P">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -486,7 +502,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="eventCell" id="vXt-Rb-0aV" customClass="EventViewCell" customModule="SafeConnect" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="eventCell" id="vXt-Rb-0aV" customClass="EventViewCell" customModule="TestingDatabase" customModuleProvider="target">
                                         <rect key="frame" x="2" y="0.0" width="353" height="130"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="BbE-T3-q9o">
@@ -531,7 +547,7 @@
         <!--Event Detailed View Controller-->
         <scene sceneID="0o4-fO-b1q">
             <objects>
-                <viewController id="k94-io-h70" customClass="EventDetailedViewController" customModule="SafeConnect" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="k94-io-h70" customClass="EventDetailedViewController" customModule="TestingDatabase" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NM5-eo-Eei">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -610,7 +626,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="BSg-gJ-PWG">
             <objects>
-                <tabBarController id="fGY-MF-dXL" customClass="TabBarController" customModule="SafeConnect" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController id="fGY-MF-dXL" customClass="TabBarController" customModule="TestingDatabase" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="Xv2-xw-9Uu"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="bCn-YU-xyB">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
@@ -686,7 +702,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Logo" width="500" height="500"/>
+        <image name="Logo" width="750" height="750"/>
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="person" catalog="system" width="128" height="117"/>

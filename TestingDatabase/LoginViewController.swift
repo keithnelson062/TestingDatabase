@@ -18,7 +18,8 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
+    @IBOutlet weak var test: GIDSignInButton!
+    
     @IBAction func login(_ sender: Any) {
     }
     
