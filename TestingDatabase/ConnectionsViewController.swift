@@ -14,6 +14,8 @@ class ConnectionsViewController: UIViewController, UICollectionViewDelegate, UIC
     @IBOutlet weak var navigation: UINavigationItem!
     @IBOutlet weak var connectionCV: UICollectionView!
     var connections: [Connection] = []
+    var detailedVC = ConnectionDetailedViewController()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
@@ -24,41 +26,40 @@ class ConnectionsViewController: UIViewController, UICollectionViewDelegate, UIC
         connectionCV.dataSource = self
         connectionCV.delegate = self
          DispatchQueue.global(qos: .userInitiated).async {
-                           
-                           
-                           self.loadusers()
-                          // self.createSpinnerView(uiView: UIView)
-                           DispatchQueue.main.async {
-                               self.connectionCV.reloadData()
-        
-
-                           }
-
-                       }
+                self.loadusers()
+                // self.createSpinnerView(uiView: UIView)
+                DispatchQueue.main.async {
+                    self.connectionCV.reloadData()
+                }
+        }
         connectionCV.register(ConnectionViewCell.self, forCellWithReuseIdentifier: "connectionCell")
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return connections.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = connectionCV.dequeueReusableCell(withReuseIdentifier: "connectionCell", for: indexPath)
             as! ConnectionViewCell
-        cell.setCell(name: "name", description: "description description description description description description description description")
+        //cell.setCell(name: "name", description: "description description description description description description description description")
+        cell.setCell(name: connections[indexPath.row].name, description: connections[indexPath.row].Email)
         return cell
     }
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selected = connections[indexPath.row]
+        detailedVC.name = selected.name
+        detailedVC.email = selected.Email
         performSegue(withIdentifier: "connectionSelected", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
          if (segue.identifier == "connectionSelected"){
-            if let detailedVC = segue.destination as? ConnectionDetailedViewController {
-                detailedVC.name = "TEST NAME"
-                detailedVC.desc = "description description description description description"
+            if let detailVC = segue.destination as? ConnectionDetailedViewController {
+                detailVC.name = detailedVC.name
+                detailVC.desc = detailedVC.desc
             }
         }
     }

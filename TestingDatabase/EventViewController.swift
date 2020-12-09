@@ -15,9 +15,9 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
 
     var events: [Event] = []
     var keys = [String]()
+    var detailedVC = EventDetailedViewController()
   //  loadevents()
     @IBOutlet weak var eventCV: UICollectionView!
-    
     @IBOutlet weak var navigation: UINavigationItem!
     
 
@@ -31,16 +31,11 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
         eventCV.dataSource = self
         eventCV.delegate = self
                 DispatchQueue.global(qos: .userInitiated).async {
-                    
-                    
                     self.loadevents()
                    // self.createSpinnerView(uiView: UIView)
                     DispatchQueue.main.async {
                         self.eventCV.reloadData()
- 
-
                     }
-
                 }
         eventCV.register(EventViewCell.self, forCellWithReuseIdentifier: "eventCell")
     }
@@ -51,23 +46,34 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = eventCV.dequeueReusableCell(withReuseIdentifier: "eventCell", for: indexPath) as! EventViewCell
-        cell.setCell(name: "name", description: "description description description description description description description description")
+        //cell.setCell(name: "name", description: "description description description description description description description description")
+        cell.setCell(name: events[indexPath.row].Eventname, description: events[indexPath.row].Summary)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selected = events[indexPath.row]
+        detailedVC.name = selected.Eventname
+        detailedVC.desc = selected.Summary
+        detailedVC.td = selected.Date_Time
+        detailedVC.covid = ""
+        detailedVC.loc = selected.Location
         performSegue(withIdentifier: "eventSelected", sender: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
          if (segue.identifier == "eventSelected"){
-            if let detailedVC = segue.destination as? EventDetailedViewController {
-                detailedVC.name = "TEST EVENT"
-                detailedVC.desc = "description description description description description"
+            if let detailVC = segue.destination as? EventDetailedViewController {
+                detailVC.name = detailedVC.name
+                detailVC.desc = detailedVC.desc
+                detailVC.contact = detailedVC.contact
+                detailVC.td = detailedVC.td
+                detailVC.covid = detailedVC.covid
+                detailVC.loc = detailedVC.loc
             }
         }
         if (segue.identifier == "addEvent"){
-            if let detailedVC = segue.destination as? AddEventViewController {
+            if segue.destination is AddEventViewController {
                 
             }
         }

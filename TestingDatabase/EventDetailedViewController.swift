@@ -41,10 +41,10 @@ class EventDetailedViewController: UIViewController, CLLocationManagerDelegate {
 
    
     
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        
-    }
+//    required init?(coder: NSCoder) {
+//        super.init(coder: coder)
+//
+//    }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
         print("locations = \(locValue.latitude) \(locValue.longitude)")

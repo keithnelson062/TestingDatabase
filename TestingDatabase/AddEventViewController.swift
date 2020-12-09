@@ -37,7 +37,6 @@ class AddEventViewController: UIViewController {
         let formatter = DateFormatter()
         // initially set the format based on your datepicker date / server String
         formatter.dateFormat = "yyyy-MM-dd"
-
         let myString = formatter.string(from: datePicker.date) // string purpose I add here
         // convert your string to date
         let yourDate = formatter.date(from: myString)
@@ -53,11 +52,11 @@ class AddEventViewController: UIViewController {
         let database = Database.database().reference()
         print(time)
         let event : [String:Any] = ["Eventname" : nameField.text,
-                "Photo_add" : "photo_link",
+        "Photo_add" : "photo_link",
         "Links" : "websites",
         "Date_Time": time,
         "Summary" : descField.text, // to be replaced with input text fields
-            "Date": myStringafd,
+        "Date": myStringafd,
         "Location": locationField.text,
         "Event_id" : covidField.text
                 ]
@@ -65,6 +64,16 @@ class AddEventViewController: UIViewController {
         database.child("Events").childByAutoId().setValue(event)
        // database.child("Events").child(userid).setValue(event)
     // find user id string
+        
+        nameField.text = ""
+        descField.text = ""
+        locationField.text = ""
+        datePicker.minimumDate = Date()
+        covidField.text = ""
+        
+        let alert = UIAlertController(title: "Event", message: "Event Successfully Added", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
 // self.ref.child("users/\(user.uid)/username").setValue(username) for changing and updating usernames and profile info
