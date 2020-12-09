@@ -7,9 +7,26 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import FirebaseCore
+
 
 class EventViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+    class Event: NSObject {
+      @objc dynamic var Date: String!
+      @objc dynamic var Date_Time: String!
+      @objc dynamic var Event_id: String!
+      @objc dynamic var Eventname: String!
+      @objc dynamic var Links: String!
+      @objc dynamic var Location: String!
+      @objc dynamic var Photo_add: String!
+      @objc dynamic var Summary: String!
+
+    }
     var events: [Event] = []
+    var evname = [String]()
+    var keys = [String]()
+  //  loadevents()
     @IBOutlet weak var eventCV: UICollectionView!
     
     @IBOutlet weak var navigation: UINavigationItem!
@@ -24,11 +41,23 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
     func setupCollectionView() {
         eventCV.dataSource = self
         eventCV.delegate = self
+                DispatchQueue.global(qos: .userInitiated).async {
+                    
+                    
+                    self.loadevents()
+                   // self.createSpinnerView(uiView: UIView)
+                    DispatchQueue.main.async {
+                        self.eventCV.reloadData()
+ 
+
+                    }
+
+                }
         eventCV.register(EventViewCell.self, forCellWithReuseIdentifier: "eventCell")
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return events.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -56,6 +85,33 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
         
     }
 
+    func loadevents(){
+        Database.database().reference().child("Events").observe(.value, with: { (snapshot) in
+        let value = snapshot.value as? NSDictionary // casting as dictionary
+        let ekeys = snapshot.key
+        if let dict = snapshot.value as? [String : Any]{ //casting as anyobject
+           let ekeys = dict.keys
+            
+            var event = Event() // creating new event object
+            for x in ekeys {
+                //print(dict[x]!)
+                event.setValuesForKeys(dict[x]! as! [String : Any]) // set to dict
+                self.events.append(event)
+              //  event.setValue(dict[x]!, forKey: x) // set to dict
+            }
+//            print(event.Eventname!)
+//            for y in self.events {
+//                print(y.Date!)
+
+//            }
+
+           // print(ekeys)
+          //  print(dict)
+        }
+            //print(value!)
+            //print(" the keys are "+keys)
+    }, withCancel: nil)
+}
     /*
     // MARK: - Navigation
 

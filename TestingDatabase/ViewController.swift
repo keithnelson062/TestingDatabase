@@ -62,7 +62,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let ref = Database.database().reference().child("Events") // fetching data by events on database
         ref.observe(.childAdded) { (snapshot) in
             self.myarray = []
-            Newevents = []
+            
             self.arrayname = []
             self.aname = []
             Database.database().reference().child("Events").observe(.childAdded, with: { (snapshot) in
@@ -87,24 +87,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 
             }, withCancel: nil)
             print("aname somehting \(self.aname)")
-
             print(Newevents)
             print(self.arrayname)
-            var count = 0
-            for x in snapshot.key {
-                let name = snapshot.value! as? Dictionary<String, String>
-                if(name?.count == 8){
-                       count = count + 1
-                    for each in name! {
-                        if (each.key == "Eventname"){
-                            self.myarray.append(each.value)
-                            self.Tabledata.reloadData()
-                       }
-                    }
-                }
-
-            }
-
         }
         Tabledata.reloadData()
 
