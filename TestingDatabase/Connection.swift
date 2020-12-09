@@ -7,8 +7,10 @@
 //
 
 import Foundation
-
-struct Connection: Decodable {
-    var name = ""
-    var description = ""
+import UIKit
+class Connection: NSObject {
+    @objc dynamic var name: String!
+    @objc dynamic var Email: String! // to replace and update user data and to be replace with input fields
+    @objc dynamic var Googleid: String!
+    @objc dynamic var Users : String!
 }

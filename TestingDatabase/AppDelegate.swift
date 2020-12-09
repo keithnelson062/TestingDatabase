@@ -75,8 +75,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
       let givenName = user.profile.givenName
       let familyName = user.profile.familyName
       let email = user.profile.email
-      // ...
+      let database = Database.database().reference()
+
         
+      // ...
+        let object : [String: Any] = [ // user data
+            "name": fullName,
+            "Email": email, // to replace and update user data and to be replace with input fields
+            "Googleid": idToken,
+            "Users" : userId,
+        ]
+        database.child("user").childByAutoId().setValue(object) // adding user data to be also replace with the google ids and possibly merged as one
+
     }
 // keep the userid
     // sign out by disconnect

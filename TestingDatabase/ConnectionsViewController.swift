@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import FirebaseDatabase
+import FirebaseCore
 
 class ConnectionsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-
     @IBOutlet weak var navigation: UINavigationItem!
     @IBOutlet weak var connectionCV: UICollectionView!
     var connections: [Connection] = []
@@ -22,6 +23,18 @@ class ConnectionsViewController: UIViewController, UICollectionViewDelegate, UIC
     func setupCollectionView() {
         connectionCV.dataSource = self
         connectionCV.delegate = self
+         DispatchQueue.global(qos: .userInitiated).async {
+                           
+                           
+                           self.loadusers()
+                          // self.createSpinnerView(uiView: UIView)
+                           DispatchQueue.main.async {
+                               self.connectionCV.reloadData()
+        
+
+                           }
+
+                       }
         connectionCV.register(ConnectionViewCell.self, forCellWithReuseIdentifier: "connectionCell")
     }
     
@@ -48,6 +61,35 @@ class ConnectionsViewController: UIViewController, UICollectionViewDelegate, UIC
                 detailedVC.desc = "description description description description description"
             }
         }
+    }
+        func loadusers(){
+
+            Database.database().reference().child("user").observe(.value, with: { (snapshot) in
+            let value = snapshot.value as? NSDictionary // casting as dictionary
+            let ekeys = snapshot.key
+            if let dict = snapshot.value as? [String : Any]{ //casting as anyobject
+               let ekeys = dict.keys
+                
+                var User = Connection() // creating new event object
+                for x in ekeys {
+                    //print(dict[x]!)
+                    User.setValuesForKeys(dict[x]! as! [String : Any]) // set to dict
+                    self.connections.append(User)
+                  //  event.setValue(dict[x]!, forKey: x) // set to dict
+                }
+    //            print(event.Eventname!)
+                for y in self.connections {
+                    print(y.Email)
+                    print(y.name)
+
+                }
+
+               // print(ekeys)
+              //  print(dict)
+            }
+                //print(value!)
+                //print(" the keys are "+keys)
+        }, withCancel: nil)
     }
 
     /*
