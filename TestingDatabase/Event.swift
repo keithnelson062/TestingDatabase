@@ -9,13 +9,13 @@
 import UIKit
 
 class Event: NSObject {
-    var Date: String?
-    var Date_Time: String?
-    var Event_id: String?
-    var Eventname: String?
-    var Links: String?
-    var Location: String?
-    var Photo_add: String?
-    var Summary: String?
+    @objc dynamic var Date: String!
+    @objc dynamic var Date_Time: String!
+    @objc dynamic var Event_id: String!
+    @objc dynamic var Eventname: String!
+    @objc dynamic var Links: String!
+    @objc dynamic var Location: String!
+    @objc dynamic var Photo_add: String!
+    @objc dynamic var Summary: String!
 
 }

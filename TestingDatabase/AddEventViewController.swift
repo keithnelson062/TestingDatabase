@@ -24,22 +24,42 @@ class AddEventViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     //self.ref.child("users").child(user.uid).setValue(["username": username]) for adding users
-
+    func getTime(sender:UIDatePicker) -> String
+    {
+        var dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "hh:mm:ss a"
+        var ouptputTime = dateFormatter.string(from: sender.date)
+        print("ouptputTime:-\(ouptputTime)")
+        return "ouptputTime:-\(ouptputTime)"
+    }
     
     @IBAction func addEvent(_ sender: Any) {
+        let formatter = DateFormatter()
+        // initially set the format based on your datepicker date / server String
+        formatter.dateFormat = "yyyy-MM-dd"
+
+        let myString = formatter.string(from: datePicker.date) // string purpose I add here
+        // convert your string to date
+        let yourDate = formatter.date(from: myString)
+        //then again set the date format whhich type of output you need
+        formatter.dateFormat = "dd-MMM-yyyy"
+        // again convert your date to string
+        let myStringafd = formatter.string(from: yourDate!)
+
+        print(myStringafd)
+        
         //let userID = Auth.auth().currentUser?.uid
-
+        var time = getTime(sender: datePicker)
         let database = Database.database().reference()
-
-        let event : [String:Any] = [
-        "Eventname" : nameField.text ?? "something2",
-        "Photo_add" : "photo_link",
+        print(time)
+        let event : [String:Any] = ["Eventname" : nameField.text,
+                "Photo_add" : "photo_link",
         "Links" : "websites",
-        "Date": datePicker.date,
-        "Summary" : descField.text!, // to be replaced with input text fields
-        "Date_Time": [".sv": "timestamp"],
-        "Location": locationField.text ?? "something",
-        "Event_id" : "event_id"
+        "Date_Time": time,
+        "Summary" : descField.text, // to be replaced with input text fields
+            "Date": myStringafd,
+        "Location": locationField.text,
+        "Event_id" : covidField.text
                 ]
 
         database.child("Events").childByAutoId().setValue(event)

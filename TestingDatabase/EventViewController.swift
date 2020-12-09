@@ -12,19 +12,8 @@ import FirebaseCore
 
 
 class EventViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
-    class Event: NSObject {
-      @objc dynamic var Date: String!
-      @objc dynamic var Date_Time: String!
-      @objc dynamic var Event_id: String!
-      @objc dynamic var Eventname: String!
-      @objc dynamic var Links: String!
-      @objc dynamic var Location: String!
-      @objc dynamic var Photo_add: String!
-      @objc dynamic var Summary: String!
 
-    }
     var events: [Event] = []
-    var evname = [String]()
     var keys = [String]()
   //  loadevents()
     @IBOutlet weak var eventCV: UICollectionView!
@@ -100,10 +89,11 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
               //  event.setValue(dict[x]!, forKey: x) // set to dict
             }
 //            print(event.Eventname!)
-//            for y in self.events {
-//                print(y.Date!)
+            for y in self.events {
+                print(y.Links!)
+                print(y.Photo_add!)
 
-//            }
+            }
 
            // print(ekeys)
           //  print(dict)
