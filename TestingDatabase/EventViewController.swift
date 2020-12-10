@@ -25,19 +25,21 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
         super.viewDidLoad()
         setupCollectionView()
         // Do any additional setup after loading the view.
+        print("viewDidLoad done")
     }
     
     func setupCollectionView() {
         eventCV.dataSource = self
         eventCV.delegate = self
-                DispatchQueue.global(qos: .userInitiated).async {
-                    self.loadevents()
-                   // self.createSpinnerView(uiView: UIView)
-                    DispatchQueue.main.async {
-                        self.eventCV.reloadData()
-                    }
-                }
+        DispatchQueue.global(qos: .userInteractive).async {
+            self.loadevents()
+            // self.createSpinnerView(uiView: UIView)
+            DispatchQueue.main.async {
+                self.eventCV.reloadData()
+            }
+        }
         eventCV.register(EventViewCell.self, forCellWithReuseIdentifier: "eventCell")
+
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -45,6 +47,7 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        print("cell")
         let cell = eventCV.dequeueReusableCell(withReuseIdentifier: "eventCell", for: indexPath) as! EventViewCell
         //cell.setCell(name: "name", description: "description description description description description description description description")
         cell.setCell(name: events[indexPath.row].Eventname, description: events[indexPath.row].Summary)
@@ -82,30 +85,32 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
 
     func loadevents(){
         Database.database().reference().child("Events").observe(.value, with: { (snapshot) in
-        let value = snapshot.value as? NSDictionary // casting as dictionary
-        let ekeys = snapshot.key
+       // let value = snapshot.value as? NSDictionary // casting as dictionary
+      //  let ekeys = snapshot.key
         if let dict = snapshot.value as? [String : Any]{ //casting as anyobject
            let ekeys = dict.keys
             
-            var event = Event() // creating new event object
             for x in ekeys {
+                let event = Event() // creating new event object
                 //print(dict[x]!)
                 event.setValuesForKeys(dict[x]! as! [String : Any]) // set to dict
                 self.events.append(event)
               //  event.setValue(dict[x]!, forKey: x) // set to dict
             }
 //            print(event.Eventname!)
-            for y in self.events {
-                print(y.Links!)
-                print(y.Photo_add!)
-
-            }
-
+//            for y in self.events {
+//               // print(y.Links!)
+//                // print(y.Photo_add!)
+//
+//            }
            // print(ekeys)
+        //    print(self.events)
           //  print(dict)
         }
             //print(value!)
             //print(" the keys are "+keys)
+            print(self.events)
+            self.eventCV.reloadData()
     }, withCancel: nil)
 }
     /*
