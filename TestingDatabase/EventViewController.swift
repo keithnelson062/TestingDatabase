@@ -6,15 +6,15 @@
 //  Copyright © 2020 Michelle Katz. All rights reserved.
 //
 
+
 import UIKit
 import FirebaseDatabase
 import FirebaseCore
 
-var events: [Event] = []
 
 class EventViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
- //   var events: [Event] = []
+    var events: [Event] = []
     var keys = [String]()
     var detailedVC = EventDetailedViewController()
   //  loadevents()
@@ -51,13 +51,7 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
         print("cell")
         let cell = eventCV.dequeueReusableCell(withReuseIdentifier: "eventCell", for: indexPath) as! EventViewCell
         //cell.setCell(name: "name", description: "description description description description description description description description")
-        
-        print("cv" + events[indexPath.row].Eventname!)
-        print("cv" + events[indexPath.row].Summary!)
         cell.setCell(name: events[indexPath.row].Eventname, description: events[indexPath.row].Summary)
-        print("cv" + events[indexPath.row].Eventname!)
-        print("cv" + events[indexPath.row].Summary!)
-
         return cell
     }
     
@@ -101,20 +95,10 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
                 let event = Event() // creating new event object
                 //print(dict[x]!)
                 event.setValuesForKeys(dict[x]! as! [String : Any]) // set to dict
-                events.append(event)
+                self.events.append(event)
               //  event.setValue(dict[x]!, forKey: x) // set to dict
             }
 //            print(event.Eventname!)
-//<<<<<<< HEAD
-            for y in events {
-                print(y.Links!)
-                print(y.Photo_add!)
-
-            }
-
-           // print(ekeys)
-            print(events.count)
-=======
 //            for y in self.events {
 //               // print(y.Links!)
 //                // print(y.Photo_add!)
@@ -123,17 +107,15 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
            // print(ekeys)
         //    print(self.events)
           //  print(dict)
->>>>>>> b84daf702ef39baf27dbc695e3cd8b93dc656dbf
         }
             //print(value!)
             //print(" the keys are "+keys)
-            print(events)
+            print(self.events)
             self.eventCV.reloadData()
     }, withCancel: nil)
 }
     /*
     // MARK: - Navigation
-
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
