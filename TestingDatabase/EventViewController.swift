@@ -10,10 +10,10 @@ import UIKit
 import FirebaseDatabase
 import FirebaseCore
 
-
+    var events: [Event] = []
 class EventViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
 
-    var events: [Event] = []
+ //   var events: [Event] = []
     var keys = [String]()
     var detailedVC = EventDetailedViewController()
   //  loadevents()
@@ -47,7 +47,13 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = eventCV.dequeueReusableCell(withReuseIdentifier: "eventCell", for: indexPath) as! EventViewCell
         //cell.setCell(name: "name", description: "description description description description description description description description")
+        
+        print("cv" + events[indexPath.row].Eventname!)
+        print("cv" + events[indexPath.row].Summary!)
         cell.setCell(name: events[indexPath.row].Eventname, description: events[indexPath.row].Summary)
+        print("cv" + events[indexPath.row].Eventname!)
+        print("cv" + events[indexPath.row].Summary!)
+
         return cell
     }
     
@@ -91,18 +97,18 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
             for x in ekeys {
                 //print(dict[x]!)
                 event.setValuesForKeys(dict[x]! as! [String : Any]) // set to dict
-                self.events.append(event)
+                events.append(event)
               //  event.setValue(dict[x]!, forKey: x) // set to dict
             }
 //            print(event.Eventname!)
-            for y in self.events {
+            for y in events {
                 print(y.Links!)
                 print(y.Photo_add!)
 
             }
 
            // print(ekeys)
-          //  print(dict)
+            print(events.count)
         }
             //print(value!)
             //print(" the keys are "+keys)

@@ -66,11 +66,12 @@ class ConnectionsViewController: UIViewController, UICollectionViewDelegate, UIC
         func loadusers(){
 
             Database.database().reference().child("user").observe(.value, with: { (snapshot) in
-            let value = snapshot.value as? NSDictionary // casting as dictionary
-            let ekeys = snapshot.key
+  //          let value = snapshot.value as? NSDictionary // casting as dictionary
+  //          let ekeys = snapshot.key
             if let dict = snapshot.value as? [String : Any]{ //casting as anyobject
                let ekeys = dict.keys
-                
+ //               print(ekeys)
+//                print(value)
                 var User = Connection() // creating new event object
                 for x in ekeys {
                     //print(dict[x]!)
@@ -80,8 +81,8 @@ class ConnectionsViewController: UIViewController, UICollectionViewDelegate, UIC
                 }
     //            print(event.Eventname!)
                 for y in self.connections {
-                    print(y.Email)
-                    print(y.name)
+                    print(y.Email!)
+                    print(y.name!)
 
                 }
 

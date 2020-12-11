@@ -17,7 +17,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         Newevents = [] // array of new events
         Database.database().reference().child("Events").observe(.childAdded, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary // casting as dictionary
-            let username = value?["Links"] as? String ?? "" // which feature is being caught
+  //          let username = value?["Links"] as? String ?? "" // which feature is being caught
             
             if let dict = snapshot.value as? [String : AnyObject]{ //casting as anyobject
                 let event = Event() // creating new event object
