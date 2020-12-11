@@ -4,13 +4,12 @@
 //
 //  Created by Jessica Wallen on 11/20/20.
 //  Copyright © 2020 Michelle Katz. All rights reserved.
-//
+// calendar from here: https://www.ioscreator.com/tutorials/add-event-calendar-ios-tutorial
 
 import UIKit
-import MapKit
-import CoreLocation
-class EventDetailedViewController: UIViewController, CLLocationManagerDelegate {
-    let locationManager = CLLocationManager()
+import EventKit
+class EventDetailedViewController: UIViewController {
+    
     var name: String = ""
     var desc: String = ""
     var loc: String = ""
@@ -21,72 +20,72 @@ class EventDetailedViewController: UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var eventName: UILabel!
     @IBOutlet weak var eventDescription: UITextView!
     @IBOutlet weak var location: UITextView!
-    @IBOutlet weak var contactInfo: UITextView!
     @IBOutlet weak var timeDate: UITextView!
     @IBOutlet weak var covidPrecautions: UITextView!
-    @IBOutlet weak var map: MKMapView!
     
-    
- func getLocation(from address: String, completion: @escaping (_ locations: CLLocationCoordinate2D?)-> Void) {
-     let geocoder = CLGeocoder()
-     geocoder.geocodeAddressString(address) { (placemarks, error) in
-         guard let placemarks = placemarks,
-         let locations = placemarks.first?.location?.coordinate else {
-             completion(nil)
-             return
-         }
-         completion(locations)
-     }
- }
-
-   
-    
-//    required init?(coder: NSCoder) {
-//        super.init(coder: coder)
-//
-//    }
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate else { return }
-        print("locations = \(locValue.latitude) \(locValue.longitude)")
+    @IBAction func addToCalendar(_ sender: Any) {
+        let eventStore = EKEventStore()
+            
+        switch EKEventStore.authorizationStatus(for: .event) {
+        case .authorized:
+            insertEvent(store: eventStore)
+        case .denied:
+            print("Access denied")
+        case .notDetermined:
+            eventStore.requestAccess(to: .event, completion:
+              {[weak self] (granted: Bool, error: Error?) -> Void in
+                  if granted {
+                    self!.insertEvent(store: eventStore)
+                  } else {
+                        print("Access denied")
+                  }
+            })
+        default:
+            print("Case default")
+        }
     }
-//    private var distanceBetweenCoordinates: Double {
-//
-//        var latitude = self.map.annotations[0].coordinate.latitude
-//        var longitude = self.map.annotations[0].coordinate.longitude
-//          let to = CLLocation(latitude: latitude, longitude: longitude)
-//
-//          latitude = self.locationManager.location?.coordinate.latitude as! CLLocationDegrees
-//        longitude = self.locationManager.location?.coordinate.longitude as! CLLocationDegrees
-//          let from = CLLocation(latitude: latitude, longitude: longitude)
-//
-//          let distance = to.distance(from: from)
-//
-//          return distance
-//      }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        eventName.text = "Name: " + name
+        eventName.text = name
         eventDescription.text = "Description: " + desc
-        location.text = loc
-        contactInfo.text = "Contact Info: " + contact
-        timeDate.text = td
+        location.text = "Location: " + loc
+        timeDate.text = "Date/Time: " + td
         covidPrecautions.text = "COVID-19 Precautions: " + covid
-// map.mapType = .satellite
-//        var cors = getLocation(from: location.text) { locations in
-//           print(locations.debugDescription)
-//            let Event_location = PointOfInterest(title: self.eventName.text!, locationName: self.location.text, coordinate: CLLocationCoordinate2DMake(locations!.latitude, locations!.longitude))
-//            //
-//            self.map.addAnnotation(Event_location)
        }
+    
+    func insertEvent(store: EKEventStore) {
+        let calendars = store.calendars(for: .event)
+        for calendar in calendars {
+            if calendar.title == "Calendar" {
+                let formatter = DateFormatter()
+                formatter.dateFormat = "EEE MMM d, yyyy @ K:mm a"
+                let startDate = formatter.date(from: td)
+                let endDate = startDate?.addingTimeInterval(60 * 60)
+                let event = EKEvent(eventStore: store)
+                event.calendar = calendar
+                event.title = name
+                event.startDate = startDate
+                event.endDate = endDate
+                    
+                do {
+                    try store.save(event, span: .thisEvent)
+                    let alert = UIAlertController(title: "Event", message: "Event Successfully Added to Calendar", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+                catch {
+                   print("Error saving event in calendar")
+                    let alert = UIAlertController(title: "Event", message: "Could not save event to calendar", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                }
+                }
+            }
+        }
 
-        
-        
-//        locationManager.delegate = self
-//        locationManager.requestWhenInUseAuthorization()
-//        locationManager.startUpdatingLocation()
-        // Do any additional setup after loading the view.
     }
+
     
     
     /*
