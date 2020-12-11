@@ -14,7 +14,7 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="LoginViewController" customModule="SafeConnect" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BAY-8f-dwH">
@@ -22,7 +22,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                <state key="normal" title="Sign in with Google">
+                                <state key="normal" title="Go to SafeConnect">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
@@ -36,7 +36,7 @@
                                 <color key="tintColor" red="0.48958701844042929" green="0.74222321602433006" blue="0.82554727157360408" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t4d-8Q-q4f" customClass="GIDSignInButton">
-                                <rect key="frame" x="81" y="622" width="212" height="37"/>
+                                <rect key="frame" x="81" y="544" width="212" height="37"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
@@ -44,6 +44,7 @@
                         <color key="backgroundColor" red="0.84892767670000002" green="0.99592190979999995" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="nCL-cq-5We"/>
                     <connections>
                         <outlet property="test" destination="t4d-8Q-q4f" id="oiH-Fn-hLw"/>
                     </connections>
@@ -123,6 +124,7 @@
                                 <state key="normal" title="Signout Google  "/>
                                 <connections>
                                     <action selector="signout:" destination="zOy-y0-YOM" eventType="touchUpInside" id="Kgk-Oc-kyd"/>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" identifier="loggedOut" id="T4M-sY-2a3"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -707,7 +709,7 @@
         <image name="person.circle" catalog="system" width="128" height="121"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <namedColor name="VeryLightBlue">
-            <color red="0.78266691882149975" green="0.91067568899361029" blue="0.94225888324873097" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.78299999237060547" green="0.91100001335144043" blue="0.94199997186660767" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>
 </document>

@@ -49,10 +49,10 @@ class AddEventViewController: UIViewController {
         "Photo_add" : "photo_link",
         "Links" : "websites",
         "Date_Time": time,
-        "Summary" : descField.text, // to be replaced with input text fields
+        "Summary" : descField.text ?? "", // to be replaced with input text fields
         "Date": dateString,
-        "Location": locationField.text,
-        "Event_id" : covidField.text
+        "Location": locationField.text ?? "",
+        "Event_id" : covidField.text ?? ""
                 ]
 
         database.child("Events").childByAutoId().setValue(event)

@@ -108,6 +108,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
     // sign out button
     @IBAction func didTapSignOut(_ sender: AnyObject) {
       GIDSignIn.sharedInstance().signOut()
+        print("this function")
     }
 
 
