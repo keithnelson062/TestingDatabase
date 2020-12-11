@@ -21,11 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
-    
         // Initialize sign-in
         GIDSignIn.sharedInstance().clientID = "676438809748-sn1is1foiuhtfbfi02t0374rqm2c8oq8.apps.googleusercontent.com"
         GIDSignIn.sharedInstance().delegate = self
-
         return true
     }
 
@@ -88,17 +86,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
             "Profile_Des": "", 
             "Users" : userId!,
         ]
-        
-        
-
         database.child("Users/\(userId!)").setValue(object)
         currentId = userId!
         //"users/\(user.uid)/username
         //adding user data to be also replace with the google ids and possibly merged as one
-        
-
     }
-// keep the userid
+    // keep the userid
     // sign out by disconnect
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!,
               withError error: Error!) {
@@ -109,7 +102,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
     // sign out button
     @IBAction func didTapSignOut(_ sender: AnyObject) {
       GIDSignIn.sharedInstance().signOut()
-        print("this function")
     }
 
 

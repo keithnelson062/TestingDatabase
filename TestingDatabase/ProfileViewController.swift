@@ -8,34 +8,34 @@
 
 import UIKit
 import GoogleSignIn
-class ProfileViewController: UIViewController, UITableViewDataSource {
+class ProfileViewController: UIViewController {
 
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var username: UILabel!
+    //@IBOutlet weak var username: UILabel!
     @IBOutlet weak var email: UILabel!
     @IBOutlet weak var phoneNumber: UILabel!
     @IBOutlet weak var profileDescription: UITextView!
-    @IBOutlet weak var tableView: UITableView!
+   // @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.dataSource = self
+       // tableView.dataSource = self
         // Do any additional setup after loading the view.
     }
     @IBAction func signout(_ sender: Any) {
         GIDSignIn.sharedInstance().signOut()
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "tableCell")
-        cell.textLabel!.text = "Event " + String(indexPath.row)
-        return cell
-    }
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return 5
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = UITableViewCell(style: .default, reuseIdentifier: "tableCell")
+//        cell.textLabel!.text = "Event " + String(indexPath.row)
+//        return cell
+//    }
        
 //    @IBAction func editProfile(_ sender: Any) {
 //        performSegue(withIdentifier: "editProfile", sender: self)

@@ -67,35 +67,28 @@
                                 <color key="tintColor" red="0.48958701840000002" green="0.74222321599999996" blue="0.82554727159999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bg6-XX-cqw">
-                                <rect key="frame" x="194" y="120" width="152" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I0g-As-miM">
-                                <rect key="frame" x="194" y="153" width="152" height="25"/>
+                                <rect key="frame" x="194" y="112" width="152" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEe-su-ez4">
-                                <rect key="frame" x="194" y="186" width="152" height="25"/>
+                                <rect key="frame" x="194" y="146" width="152" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YZk-UW-bwa">
-                                <rect key="frame" x="194" y="219" width="152" height="25"/>
+                                <rect key="frame" x="194" y="180" width="152" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Profile description here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4Wo-x2-sON">
-                                <rect key="frame" x="29" y="252" width="317" height="141"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" text="Profile description here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4Wo-x2-sON">
+                                <rect key="frame" x="29" y="252" width="317" height="376"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
@@ -113,15 +106,10 @@
                                     <segue destination="hJ0-rp-NcC" kind="show" identifier="editProfile" id="R8D-qM-D70"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xWK-pr-5q1">
-                                <rect key="frame" x="0.0" y="401" width="375" height="250"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </tableView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="f8f-KT-l8E">
                                 <rect key="frame" x="87" y="699" width="202" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Signout Google  "/>
+                                <state key="normal" title="Signout"/>
                                 <connections>
                                     <action selector="signout:" destination="zOy-y0-YOM" eventType="touchUpInside" id="Kgk-Oc-kyd"/>
                                     <segue destination="BYZ-38-t0r" kind="presentation" identifier="loggedOut" id="T4M-sY-2a3"/>
@@ -138,8 +126,6 @@
                         <outlet property="phoneNumber" destination="YZk-UW-bwa" id="Gfy-CO-AdW"/>
                         <outlet property="profileDescription" destination="4Wo-x2-sON" id="9g0-Do-tzl"/>
                         <outlet property="profileImage" destination="4Db-jM-0l6" id="bW0-YO-d0J"/>
-                        <outlet property="tableView" destination="xWK-pr-5q1" id="gdQ-Xb-y4k"/>
-                        <outlet property="username" destination="I0g-As-miM" id="WDC-OS-hVm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t78-mF-Z9R" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -160,7 +146,7 @@
                                 <color key="tintColor" red="0.48958701840000002" green="0.74222321599999996" blue="0.82554727159999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Profile description here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="owX-Wc-NIc">
-                                <rect key="frame" x="29" y="252" width="317" height="141"/>
+                                <rect key="frame" x="29" y="252" width="317" height="376"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
@@ -178,31 +164,20 @@
                                     <action selector="save:" destination="hJ0-rp-NcC" eventType="touchUpInside" id="0qk-vf-zr6"/>
                                 </connections>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="INW-g8-3zg">
-                                <rect key="frame" x="0.0" y="401" width="375" height="250"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </tableView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Username" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CzX-na-fAN">
-                                <rect key="frame" x="194" y="144" width="152" height="34"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Phone number" borderStyle="roundedRect" placeholder="Phone number" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UJB-IM-1mG">
+                                <rect key="frame" x="194" y="180" width="152" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Email" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7oY-ar-48c">
-                                <rect key="frame" x="194" y="177" width="152" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Phone number" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UJB-IM-1mG">
-                                <rect key="frame" x="194" y="210" width="152" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7SD-u2-kRs">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Name" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7SD-u2-kRs">
                                 <rect key="frame" x="194" y="112" width="152" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Email" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bYW-vK-fMG">
+                                <rect key="frame" x="194" y="146" width="152" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -213,12 +188,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="HSm-lK-SCR"/>
                     <connections>
-                        <outlet property="emailField" destination="7oY-ar-48c" id="ToH-lw-hlw"/>
+                        <outlet property="emailField" destination="bYW-vK-fMG" id="enL-pK-0mb"/>
                         <outlet property="nameField" destination="7SD-u2-kRs" id="Wnm-NM-msb"/>
                         <outlet property="phoneNumberField" destination="UJB-IM-1mG" id="x9W-jR-LD9"/>
                         <outlet property="profileDescField" destination="owX-Wc-NIc" id="nkQ-jU-Qyb"/>
-                        <outlet property="tableView" destination="INW-g8-3zg" id="tqN-ac-vQV"/>
-                        <outlet property="usernameField" destination="CzX-na-fAN" id="hUM-xX-wB7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yCf-Is-CTi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -308,35 +281,28 @@
                                 <color key="tintColor" red="0.48958701840000002" green="0.74222321599999996" blue="0.82554727159999997" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Wc-Cc-Qsx">
-                                <rect key="frame" x="194" y="110" width="152" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fzq-Ca-rF4">
-                                <rect key="frame" x="194" y="143" width="152" height="25"/>
+                                <rect key="frame" x="194" y="112" width="152" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u19-dp-urU">
-                                <rect key="frame" x="194" y="176" width="152" height="25"/>
+                                <rect key="frame" x="194" y="146" width="152" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MAm-Po-JmQ">
-                                <rect key="frame" x="194" y="209" width="152" height="25"/>
+                                <rect key="frame" x="194" y="180" width="152" height="25"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="Profile description here" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="5Gt-1Y-Xjp">
-                                <rect key="frame" x="29" y="242" width="317" height="141"/>
+                                <rect key="frame" x="29" y="252" width="317" height="376"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="17"/>
@@ -351,11 +317,6 @@
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                             </button>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ds1-05-Rt9">
-                                <rect key="frame" x="0.0" y="391" width="375" height="250"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                            </tableView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="XXX-Ou-lkJ"/>
@@ -363,12 +324,10 @@
                     <navigationItem key="navigationItem" id="7MR-jX-Dx9"/>
                     <connections>
                         <outlet property="emailLabel" destination="u19-dp-urU" id="Pwc-mO-V4X"/>
-                        <outlet property="nameLabel" destination="fzq-Ca-rF4" id="yBT-5g-2AN"/>
+                        <outlet property="nameLabel" destination="4Wc-Cc-Qsx" id="dL1-Kb-LwI"/>
                         <outlet property="phoneNumberLabel" destination="MAm-Po-JmQ" id="6tY-DC-nB0"/>
                         <outlet property="profileDescLabel" destination="5Gt-1Y-Xjp" id="crJ-Kq-nmw"/>
                         <outlet property="profileImageView" destination="05f-kR-6dl" id="uHy-qZ-UBs"/>
-                        <outlet property="tableView" destination="ds1-05-Rt9" id="Yte-dB-Qg8"/>
-                        <outlet property="usernameLabel" destination="fzq-Ca-rF4" id="xb5-2c-0LN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0RI-J2-Th6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -20,9 +20,9 @@ class AddEventViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         datePicker.minimumDate = Date()
-
         // Do any additional setup after loading the view.
     }
+    
     //self.ref.child("users").child(user.uid).setValue(["username": username]) for adding users
     func getTime(sender:UIDatePicker) -> String
     {
@@ -39,13 +39,13 @@ class AddEventViewController: UIViewController {
         let dateString = formatter.string(from: datePicker.date) // string purpose I add here
 
 
-        print(dateString)
+        //print(dateString)
         
         //let userID = Auth.auth().currentUser?.uid
         let time = getTime(sender: datePicker)
         let database = Database.database().reference()
-        print(time)
-        let event : [String:Any] = ["Eventname" : nameField.text,
+        //print(time)
+        let event : [String:Any] = ["Eventname" : nameField.text ?? "",
         "Photo_add" : "photo_link",
         "Links" : "websites",
         "Date_Time": time,
@@ -54,17 +54,14 @@ class AddEventViewController: UIViewController {
         "Location": locationField.text ?? "",
         "Event_id" : covidField.text ?? ""
                 ]
-
         database.child("Events").childByAutoId().setValue(event)
        // database.child("Events").child(userid).setValue(event)
     // find user id string
-        
         nameField.text = ""
         descField.text = ""
         locationField.text = ""
         datePicker.minimumDate = Date()
         covidField.text = ""
-        
         let alert = UIAlertController(title: "Event", message: "Event Successfully Added", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)

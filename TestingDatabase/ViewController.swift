@@ -19,11 +19,9 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         Database.database().reference().child("Events").observe(.childAdded, with: { (snapshot) in
             let value = snapshot.value as? NSDictionary // casting as dictionary
   //          let username = value?["Links"] as? String ?? "" // which feature is being caught
-            
             if let dict = snapshot.value as? [String : AnyObject]{ //casting as anyobject
                 let event = Event() // creating new event object
                 event.setValuesForKeys(dict) // set to dict
-                
                 Newevents.append(event)
                 self.arrayname.append(event.Eventname ?? "sorry")
                 self.Tabledata.reloadData()
@@ -31,17 +29,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                     DispatchQueue.main.async {
                         self.Tabledata.reloadData()
                     }
-
                 }
             }
-            print("Something")
         }, withCancel: nil)
     }
     
     var myarray = [String]()
     var arrayname = [String]()
     var aname = [String]()
-// settuping table view
+    // settuping table view
     private let database = Database.database().reference()
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Newevents.count
@@ -49,7 +45,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let mycell = UITableViewCell(style: .default, reuseIdentifier: nil)
-        
         let event = Newevents[indexPath.row]
         mycell.textLabel?.text = event.Eventname
         mycell.detailTextLabel?.text = event.Links
@@ -63,7 +58,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let ref = Database.database().reference().child("Events") // fetching data by events on database
         ref.observe(.childAdded) { (snapshot) in
             self.myarray = []
-            
             self.arrayname = []
             self.aname = []
             Database.database().reference().child("Events").observe(.childAdded, with: { (snapshot) in
@@ -72,7 +66,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                 self.aname.append(username)
                 if let dict = snapshot.value as? [String: AnyObject] {
                     let event = Event()
-                    print("jvhjvjvhjvj  \(event.Eventname ?? "why")") // testing
+                    //print("jvhjvjvhjvj  \(event.Eventname ?? "why")") // testing
                     Newevents.append(event)
                     self.arrayname.append(event.Eventname ?? "sorry") // testing
                     self.Tabledata.reloadData()
@@ -80,32 +74,28 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
                         DispatchQueue.main.async {
                             self.Tabledata.reloadData()
                             event.Eventname = dict["Eventname"] as? String
-
                         }
-
                     }
                 }
 
             }, withCancel: nil)
-            print("aname somehting \(self.aname)")
-            print(Newevents)
-            print(self.arrayname)
+            //print("aname somehting \(self.aname)")
+            //print(Newevents)
+            //print(self.arrayname)
         }
         Tabledata.reloadData()
-
     }
     
     @IBOutlet weak var Tabledata: UITableView!
     
     override func viewDidLoad() {
         self.fetchEvent()
-
         super.viewDidLoad()
         let ref = Database.database().reference()
         ref.child("Events").observe(.childAdded, with: {(snap) in
             let post = snap.value as? Event
             if let actual = post{
-                print("actuaul is \(actual)")
+                //print("actuaul is \(actual)")
                 self.Tabledata.reloadData()
             }
         })

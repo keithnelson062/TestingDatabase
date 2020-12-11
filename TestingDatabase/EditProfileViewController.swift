@@ -10,26 +10,27 @@ import UIKit
 import Firebase
 
 
-class EditProfileViewController: UIViewController, UITableViewDataSource {
+class EditProfileViewController: UIViewController {
     
     var name: String = ""
     var username: String = ""
     var email: String = ""
     var phoneNumber: String = ""
-    var desc: String = ""
+    var desc: String = "Edit profile description here..."
 
     @IBOutlet weak var nameField: UITextField!
-    @IBOutlet weak var usernameField: UITextField!
+    //@IBOutlet weak var usernameField: UITextField!
+    
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var phoneNumberField: UITextField!
     @IBOutlet weak var profileDescField: UITextView!
-    @IBOutlet weak var tableView: UITableView!
+    //@IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.dataSource = self
+       // tableView.dataSource = self
         nameField.text = name
-        usernameField.text = username
+        //usernameField.text = username
         emailField.text = email
         phoneNumberField.text = phoneNumber
         profileDescField.text = desc
@@ -39,36 +40,27 @@ class EditProfileViewController: UIViewController, UITableViewDataSource {
     
     @IBAction func save(_ sender: Any) {
         let database = Database.database().reference()
-
-          
         // ...
           let object : [String: Any] = [ // user data
             "name": nameField.text!,
             "Email": emailField.text!,
             // to replace and update user data and to be replace with input fields
             //"Phone": phoneNumberField.text ?? "",
-            
             "Profile_Des": profileDescField.text!
           ]
-          
-          
-
         database.child("Users/\(currentId)").setValue(object)
-        print(name)
-        
-        
-       
+        //print(name)
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "tableCell")
-        cell.textLabel!.text = "Event " + String(indexPath.row)
-        return cell
-    }
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return 5
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = UITableViewCell(style: .default, reuseIdentifier: "tableCell")
+//        cell.textLabel!.text = "Event " + String(indexPath.row)
+//        return cell
+//    }
     
     
 

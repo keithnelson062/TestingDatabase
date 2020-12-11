@@ -42,7 +42,6 @@ class ConnectionsViewController: UIViewController, UICollectionViewDelegate, UIC
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = connectionCV.dequeueReusableCell(withReuseIdentifier: "connectionCell", for: indexPath)
             as! ConnectionViewCell
-        //cell.setCell(name: "name", description: "description description description description description description description description")
         cell.setCell(name: connections[indexPath.row].name, description: connections[indexPath.row].Email)
         return cell
     }
@@ -75,7 +74,7 @@ class ConnectionsViewController: UIViewController, UICollectionViewDelegate, UIC
                // var User = Connection() // creating new event object
                 for x in ekeys {
                     //print(dict[x]!)
-                     var User = Connection()
+                    let User = Connection()
                     User.setValuesForKeys(dict[x]! as! [String : Any]) // set to dict
                     self.connections.append(User)
                   //  event.setValue(dict[x]!, forKey: x) // set to dict
@@ -86,7 +85,6 @@ class ConnectionsViewController: UIViewController, UICollectionViewDelegate, UIC
                     print(y.name!)
 
                 }
-
                // print(ekeys)
               //  print(dict)
             }
