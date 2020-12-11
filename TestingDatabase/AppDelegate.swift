@@ -86,7 +86,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
             "Googleid": idToken!,
             "Users" : userId!,
         ]
-        database.child("user").childByAutoId().setValue(object) // adding user data to be also replace with the google ids and possibly merged as one
+        
+        
+
+        database.child("user/\(userId!)").setValue(object)
+        //"users/\(user.uid)/username
+        //adding user data to be also replace with the google ids and possibly merged as one
+        
 
     }
 // keep the userid
