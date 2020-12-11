@@ -72,9 +72,10 @@ class ConnectionsViewController: UIViewController, UICollectionViewDelegate, UIC
                let ekeys = dict.keys
  //               print(ekeys)
 //                print(value)
-                var User = Connection() // creating new event object
+               // var User = Connection() // creating new event object
                 for x in ekeys {
                     //print(dict[x]!)
+                     var User = Connection()
                     User.setValuesForKeys(dict[x]! as! [String : Any]) // set to dict
                     self.connections.append(User)
                   //  event.setValue(dict[x]!, forKey: x) // set to dict
