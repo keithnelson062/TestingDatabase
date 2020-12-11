@@ -91,6 +91,7 @@ class ConnectionsViewController: UIViewController, UICollectionViewDelegate, UIC
             }
                 //print(value!)
                 //print(" the keys are "+keys)
+                self.connectionCV.reloadData()
         }, withCancel: nil)
     }
 
