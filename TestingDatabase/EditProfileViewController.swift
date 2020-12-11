@@ -46,8 +46,8 @@ class EditProfileViewController: UIViewController, UITableViewDataSource {
             "name": nameField.text!,
             "Email": emailField.text!,
             // to replace and update user data and to be replace with input fields
-            "Phone": phoneNumberField.text!,
-            "username": usernameField.text!,
+            //"Phone": phoneNumberField.text ?? "",
+            
             "Profile_Des": profileDescField.text!
           ]
           

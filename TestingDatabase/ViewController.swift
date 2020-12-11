@@ -10,7 +10,8 @@ import UIKit
 import FirebaseDatabase
 import FirebaseCore
 var Newevents:  [Event] = [] // arrays of events and names
-
+// go to my profile and fill in the information fields with user data
+// check for the right clearing 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     func fetchEvent() { // fecthing event data

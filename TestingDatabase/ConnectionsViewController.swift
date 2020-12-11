@@ -65,7 +65,7 @@ class ConnectionsViewController: UIViewController, UICollectionViewDelegate, UIC
     }
         func loadusers(){
 
-            Database.database().reference().child("user").observe(.value, with: { (snapshot) in
+            Database.database().reference().child("Users").observe(.value, with: { (snapshot) in
   //          let value = snapshot.value as? NSDictionary // casting as dictionary
   //          let ekeys = snapshot.key
             if let dict = snapshot.value as? [String : Any]{ //casting as anyobject

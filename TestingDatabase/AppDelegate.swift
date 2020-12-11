@@ -85,6 +85,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
             "name": fullName!,
             "Email": email!, // to replace and update user data and to be replace with input fields
             "Googleid": idToken!,
+            "Profile_Des": "", 
             "Users" : userId!,
         ]
         
