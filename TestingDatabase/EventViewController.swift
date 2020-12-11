@@ -59,7 +59,7 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
         detailedVC.name = selected.Eventname
         detailedVC.desc = selected.Summary
         detailedVC.td = selected.Date_Time
-        detailedVC.covid = ""
+        detailedVC.covid = selected.Event_id
         detailedVC.loc = selected.Location
         performSegue(withIdentifier: "eventSelected", sender: self)
     }
