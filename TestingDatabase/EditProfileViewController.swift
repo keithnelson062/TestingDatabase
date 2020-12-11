@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Firebase
+
 
 class EditProfileViewController: UIViewController, UITableViewDataSource {
     
@@ -36,6 +38,25 @@ class EditProfileViewController: UIViewController, UITableViewDataSource {
     }
     
     @IBAction func save(_ sender: Any) {
+        let database = Database.database().reference()
+
+          
+        // ...
+          let object : [String: Any] = [ // user data
+            "name": nameField.text!,
+            "Email": emailField.text!,
+            // to replace and update user data and to be replace with input fields
+            "Phone": phoneNumberField.text!,
+            "username": usernameField.text!,
+            "Profile_Des": profileDescField.text!
+          ]
+          
+          
+
+        database.child("Users/\(currentId)").setValue(object)
+        print(name)
+        
+        
        
     }
     
