@@ -35,7 +35,7 @@ class AddEventViewController: UIViewController {
     @IBAction func addEvent(_ sender: Any) {
         let formatter = DateFormatter()
         // initially set the format based on your datepicker date / server String
-        formatter.dateFormat = "EEE MMM d, yyyy @ K:mm a"
+        formatter.dateFormat = "EEE MMM d, yyyy @ hh:mm a"
         let dateString = formatter.string(from: datePicker.date) // string purpose I add here
 
 

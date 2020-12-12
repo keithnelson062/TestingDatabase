@@ -59,7 +59,7 @@ class EventDetailedViewController: UIViewController {
         for calendar in calendars {
             if calendar.title == "Calendar" {
                 let formatter = DateFormatter()
-                formatter.dateFormat = "EEE MMM d, yyyy @ K:mm a"
+                formatter.dateFormat = "EEE MMM d, yyyy @ hh:mm a"
                 let startDate = formatter.date(from: td)
                 let endDate = startDate?.addingTimeInterval(60 * 60)
                 let event = EKEvent(eventStore: store)
