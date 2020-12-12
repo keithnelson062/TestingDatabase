@@ -90,7 +90,7 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
       //  let ekeys = snapshot.key
         if let dict = snapshot.value as? [String : Any]{ //casting as anyobject
            let ekeys = dict.keys
-            
+            self.events = []
             for x in ekeys {
                 let event = Event() // creating new event object
                 //print(dict[x]!)

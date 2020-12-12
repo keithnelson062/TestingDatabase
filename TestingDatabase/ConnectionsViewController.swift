@@ -72,6 +72,7 @@ class ConnectionsViewController: UIViewController, UICollectionViewDelegate, UIC
  //               print(ekeys)
 //                print(value)
                // var User = Connection() // creating new event object
+                self.connections = []
                 for x in ekeys {
                     //print(dict[x]!)
                     let User = Connection()
