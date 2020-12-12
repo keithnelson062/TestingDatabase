@@ -12,7 +12,6 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(Newevents)
         GIDSignIn.sharedInstance()?.presentingViewController = self
         GIDSignIn.sharedInstance()?.restorePreviousSignIn()
         // Do any additional setup after loading the view.
@@ -20,12 +19,9 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var test: GIDSignInButton!
     
-    @IBAction func login(_ sender: Any) {
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "loginPress") {
-            if let tabVC = segue.destination as? TabBarController {
+            if segue.destination is TabBarController {
                 print("done")
             }
         }

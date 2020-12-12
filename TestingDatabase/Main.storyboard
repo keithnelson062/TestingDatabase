@@ -36,7 +36,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hfh-IT-jkk"/>
                                     <segue destination="fGY-MF-dXL" kind="presentation" identifier="loginPress" modalPresentationStyle="fullScreen" id="gRV-ph-fkp"/>
                                 </connections>
                             </button>

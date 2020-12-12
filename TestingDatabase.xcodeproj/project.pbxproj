@@ -55,6 +55,7 @@
 		8DFE6560257597F000E10FEE /* EventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		8DFE6561257597F000E10FEE /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "../../../Downloads/SafeConnect-2/SafeConnect/SafeConnect/Info.plist"; sourceTree = "<group>"; };
 		AA654B14923CBCAFE7FA07A7 /* Pods-TestingDatabase.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TestingDatabase.debug.xcconfig"; path = "Target Support Files/Pods-TestingDatabase/Pods-TestingDatabase.debug.xcconfig"; sourceTree = "<group>"; };
+		F8D12A25258569BF00336E44 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F8D9DE01257ED047002FB194 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,6 +82,7 @@
 		8D5A36FF2563971800451664 = {
 			isa = PBXGroup;
 			children = (
+				F8D12A25258569BF00336E44 /* README.md */,
 				8D5A370A2563971800451664 /* TestingDatabase */,
 				8D5A37092563971800451664 /* Products */,
 				64E1D06344938E9FEBA09248 /* Frameworks */,
