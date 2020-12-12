@@ -23,7 +23,7 @@ class ProfileViewController: UIViewController {
         var nowUser = Connection()
         super.viewDidLoad()
 
-                  Database.database().reference().child("Users/\(currentId)").observe(.value, with: { (snapshot) in
+        Database.database().reference().child("Users/\(currentId)").observe(.value, with: { (snapshot) in
         //          let value = snapshot.value as? NSDictionary // casting as dictionary
         //          let ekeys = snapshot.key
                   if let dict = snapshot.value as? [String : Any]{ //casting as anyobject
