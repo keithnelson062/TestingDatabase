@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "A937B914-FC45-478B-93FF-FAEAF092A173"
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "97CDFC9B-EF7B-4141-8181-6001D01FF915"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "TestingDatabase/ConnectionsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "66"
+            endingLineNumber = "66"
+            landmarkName = "loadusers()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "97CDFC9B-EF7B-4141-8181-6001D01FF915 - 3464e7ab41a0dbb2"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "SafeConnect.ConnectionsViewController.loadusers() -&gt; ()"
+                  moduleName = "SafeConnect"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joslandsmith/Desktop/TestingDatabase/TestingDatabase/ConnectionsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "67"
+                  endingLineNumber = "67"
+                  offsetFromSymbolStart = "23">
+               </Location>
+               <Location
+                  uuid = "97CDFC9B-EF7B-4141-8181-6001D01FF915 - 7f1071c709054ac6"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (__C.FIRDataSnapshot) -&gt; () in SafeConnect.ConnectionsViewController.loadusers() -&gt; ()"
+                  moduleName = "SafeConnect"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/joslandsmith/Desktop/TestingDatabase/TestingDatabase/ConnectionsViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "70"
+                  endingLineNumber = "70"
+                  offsetFromSymbolStart = "257">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>

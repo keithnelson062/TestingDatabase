@@ -69,28 +69,17 @@ class ConnectionsViewController: UIViewController, UICollectionViewDelegate, UIC
   //          let ekeys = snapshot.key
             if let dict = snapshot.value as? [String : Any]{ //casting as anyobject
                let ekeys = dict.keys
- //               print(ekeys)
-//                print(value)
-               // var User = Connection() // creating new event object
                 self.connections = []
                 for x in ekeys {
-                    //print(dict[x]!)
                     let User = Connection()
                     User.setValuesForKeys(dict[x]! as! [String : Any]) // set to dict
                     self.connections.append(User)
-                  //  event.setValue(dict[x]!, forKey: x) // set to dict
                 }
-    //            print(event.Eventname!)
                 for y in self.connections {
                     print(y.Email!)
                     print(y.name!)
-
                 }
-               // print(ekeys)
-              //  print(dict)
             }
-                //print(value!)
-                //print(" the keys are "+keys)
                 self.connectionCV.reloadData()
         }, withCancel: nil)
     }

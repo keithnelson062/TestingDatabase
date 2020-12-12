@@ -8,6 +8,7 @@
 
 import UIKit
 import GoogleSignIn
+import Firebase
 class ProfileViewController: UIViewController {
 
     @IBOutlet weak var profileImage: UIImageView!
@@ -19,9 +20,31 @@ class ProfileViewController: UIViewController {
    // @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
+        var nowUser = Connection()
         super.viewDidLoad()
-        email.text = currentemail
-        name.text = currentname
+
+                  Database.database().reference().child("Users/\(currentId)").observe(.value, with: { (snapshot) in
+        //          let value = snapshot.value as? NSDictionary // casting as dictionary
+        //          let ekeys = snapshot.key
+                  if let dict = snapshot.value as? [String : Any]{ //casting as anyobject
+                     let ekeys = dict.keys
+                    print(dict)
+                        nowUser = Connection()
+                          nowUser.setValuesForKeys(dict as! [String : Any]) // set to dict
+                          //self.connections.append(User)
+                      
+                    print(nowUser.Email!)
+                    print(nowUser.name!)
+                    self.email.text = nowUser.Email!
+                    self.name.text = nowUser.name!
+                    print(ekeys)
+                      
+                  }
+              }, withCancel: nil)
+          
+   
+//        email.text = nowUser.Email!
+//        name.text = nowUser.name!
        // tableView.dataSource = self
         // Do any additional setup after loading the view.
     }
