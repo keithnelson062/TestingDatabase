@@ -89,6 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
             "Users" : userId!,
         ]
         database.child("Users/\(userId!)").setValue(object)
+
         currentId = userId!
         currentemail = email!
         currentname = fullName!
