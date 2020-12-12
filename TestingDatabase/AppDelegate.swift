@@ -14,6 +14,8 @@ import Firebase
 
 import GoogleSignIn
 var currentId = ""
+var currentemail = ""
+var currentname = ""
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
     
@@ -88,6 +90,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
         ]
         database.child("Users/\(userId!)").setValue(object)
         currentId = userId!
+        currentemail = email!
+        currentname = fullName!
         //"users/\(user.uid)/username
         //adding user data to be also replace with the google ids and possibly merged as one
     }

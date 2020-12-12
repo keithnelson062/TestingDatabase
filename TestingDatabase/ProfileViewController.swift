@@ -20,6 +20,8 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        email.text = currentemail
+        name.text = currentname
        // tableView.dataSource = self
         // Do any additional setup after loading the view.
     }
