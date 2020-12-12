@@ -28,25 +28,14 @@ class ProfileViewController: UIViewController {
         //          let ekeys = snapshot.key
                   if let dict = snapshot.value as? [String : Any]{ //casting as anyobject
                      let ekeys = dict.keys
-                    print(dict)
                         nowUser = Connection()
                           nowUser.setValuesForKeys(dict as! [String : Any]) // set to dict
-                          //self.connections.append(User)
-                      
-                    print(nowUser.Email!)
-                    print(nowUser.name!)
                     self.email.text = nowUser.Email!
                     self.name.text = nowUser.name!
-                    print(ekeys)
                       
                   }
               }, withCancel: nil)
-          
-   
-//        email.text = nowUser.Email!
-//        name.text = nowUser.name!
-       // tableView.dataSource = self
-        // Do any additional setup after loading the view.
+
     }
     @IBAction func signout(_ sender: Any) {
         GIDSignIn.sharedInstance().signOut()
