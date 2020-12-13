@@ -28,9 +28,7 @@ class EditProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       // tableView.dataSource = self
         nameField.text = name
-        //usernameField.text = username
         emailField.text = email
         phoneNumberField.text = phoneNumber
         profileDescField.text = desc
@@ -41,26 +39,26 @@ class EditProfileViewController: UIViewController {
     @IBAction func save(_ sender: Any) {
         let database = Database.database().reference()
         // ...
+        if(nameField.text == "" || emailField.text == "" || phoneNumberField.text == "" || profileDescField.text == ""){
+            let alert = UIAlertController(title: "Profile Not Complete", message: "Please fill in the remaining fields.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+            
+        }
+        else{
           let object : [String: Any] = [ // user data
             "name": nameField.text!,
             "Email": emailField.text!,
             // to replace and update user data and to be replace with input fields
-            //"Phone": phoneNumberField.text ?? "",
+            "PhoneNumber": phoneNumberField.text!,
             "Profile_Des": profileDescField.text!
           ]
         database.child("Users/\(currentId)").setValue(object)
-        //print(name)
+        let alert = UIAlertController(title: "Profile Edited", message: "Profile changes saved!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        }
     }
-    
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 5
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = UITableViewCell(style: .default, reuseIdentifier: "tableCell")
-//        cell.textLabel!.text = "Event " + String(indexPath.row)
-//        return cell
-//    }
     
     
 

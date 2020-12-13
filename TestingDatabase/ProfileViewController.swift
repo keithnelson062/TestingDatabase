@@ -13,25 +13,23 @@ class ProfileViewController: UIViewController {
 
     @IBOutlet weak var profileImage: UIImageView!
     @IBOutlet weak var name: UILabel!
-    //@IBOutlet weak var username: UILabel!
     @IBOutlet weak var email: UILabel!
     @IBOutlet weak var phoneNumber: UILabel!
     @IBOutlet weak var profileDescription: UITextView!
-   // @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         var nowUser = Connection()
         super.viewDidLoad()
 
         Database.database().reference().child("Users/\(currentId)").observe(.value, with: { (snapshot) in
-        //          let value = snapshot.value as? NSDictionary // casting as dictionary
-        //          let ekeys = snapshot.key
                   if let dict = snapshot.value as? [String : Any]{ //casting as anyobject
                      let ekeys = dict.keys
                         nowUser = Connection()
                           nowUser.setValuesForKeys(dict as! [String : Any]) // set to dict
                     self.email.text = nowUser.Email!
                     self.name.text = nowUser.name!
+                    self.profileDescription.text = nowUser.Profile_Des!
+                    self.phoneNumber.text = nowUser.PhoneNumber!
                       
                   }
               }, withCancel: nil)
@@ -41,15 +39,6 @@ class ProfileViewController: UIViewController {
         GIDSignIn.sharedInstance().signOut()
     }
     
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 5
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = UITableViewCell(style: .default, reuseIdentifier: "tableCell")
-//        cell.textLabel!.text = "Event " + String(indexPath.row)
-//        return cell
-//    }
        
 //    @IBAction func editProfile(_ sender: Any) {
 //        performSegue(withIdentifier: "editProfile", sender: self)

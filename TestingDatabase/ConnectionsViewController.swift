@@ -27,7 +27,6 @@ class ConnectionsViewController: UIViewController, UICollectionViewDelegate, UIC
         connectionCV.delegate = self
          DispatchQueue.global(qos: .userInitiated).async {
                 self.loadusers()
-                // self.createSpinnerView(uiView: UIView)
                 DispatchQueue.main.async {
                     self.connectionCV.reloadData()
                 }
@@ -51,6 +50,8 @@ class ConnectionsViewController: UIViewController, UICollectionViewDelegate, UIC
         let selected = connections[indexPath.row]
         detailedVC.name = selected.name
         detailedVC.email = selected.Email
+        detailedVC.desc = selected.Profile_Des
+        detailedVC.phoneNumber = selected.PhoneNumber
         performSegue(withIdentifier: "connectionSelected", sender: self)
     }
     
@@ -58,15 +59,15 @@ class ConnectionsViewController: UIViewController, UICollectionViewDelegate, UIC
          if (segue.identifier == "connectionSelected"){
             if let detailVC = segue.destination as? ConnectionDetailedViewController {
                 detailVC.name = detailedVC.name
+                detailVC.email = detailedVC.email
                 detailVC.desc = detailedVC.desc
+                detailVC.phoneNumber = detailedVC.phoneNumber
             }
         }
     }
         func loadusers(){
 
             Database.database().reference().child("Users").observe(.value, with: { (snapshot) in
-  //          let value = snapshot.value as? NSDictionary // casting as dictionary
-  //          let ekeys = snapshot.key
             if let dict = snapshot.value as? [String : Any]{ //casting as anyobject
                let ekeys = dict.keys
                 self.connections = []
@@ -74,10 +75,6 @@ class ConnectionsViewController: UIViewController, UICollectionViewDelegate, UIC
                     let User = Connection()
                     User.setValuesForKeys(dict[x]! as! [String : Any]) // set to dict
                     self.connections.append(User)
-                }
-                for y in self.connections {
-                    print(y.Email!)
-                    print(y.name!)
                 }
             }
                 self.connectionCV.reloadData()

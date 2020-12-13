@@ -16,6 +16,9 @@ import GoogleSignIn
 var currentId = ""
 var currentemail = ""
 var currentname = ""
+var currentPhone = ""
+var currentGoogleId = ""
+var currentUsers = ""
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
     
@@ -77,6 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
       let givenName = user.profile.givenName
       let familyName = user.profile.familyName
       let email = user.profile.email
+      let phoneNumber = ""
       let database = Database.database().reference()
 
         
@@ -87,13 +91,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
             "Googleid": idToken!,
             "Profile_Des": "", 
             "Users" : userId!,
+            "PhoneNumber" : phoneNumber
         ]
         database.child("Users/\(userId!)").setValue(object)
 
         currentId = userId!
         currentemail = email!
         currentname = fullName!
-        //"users/\(user.uid)/username
+        currentPhone = phoneNumber
+        currentGoogleId = idToken!
+        currentUsers = userId!
         //adding user data to be also replace with the google ids and possibly merged as one
     }
     // keep the userid

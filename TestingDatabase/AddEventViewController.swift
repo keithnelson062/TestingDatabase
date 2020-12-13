@@ -37,14 +37,8 @@ class AddEventViewController: UIViewController {
         // initially set the format based on your datepicker date / server String
         formatter.dateFormat = "EEE MMM d, yyyy @ hh:mm a"
         let dateString = formatter.string(from: datePicker.date) // string purpose I add here
-
-
-        //print(dateString)
-        
-        //let userID = Auth.auth().currentUser?.uid
         let time = getTime(sender: datePicker)
         let database = Database.database().reference()
-        //print(time)
         let event : [String:Any] = ["Eventname" : nameField.text ?? "",
         "Photo_add" : "photo_link",
         "Links" : "websites",
@@ -55,14 +49,13 @@ class AddEventViewController: UIViewController {
         "Event_id" : covidField.text ?? ""
                 ]
         database.child("Events").childByAutoId().setValue(event)
-       // database.child("Events").child(userid).setValue(event)
-    // find user id string
+        // find user id string
         nameField.text = ""
         descField.text = ""
         locationField.text = ""
         datePicker.minimumDate = Date()
         covidField.text = ""
-        let alert = UIAlertController(title: "Event", message: "Event Successfully Added", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Event Added", message: "Event Successfully Added", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }

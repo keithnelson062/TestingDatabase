@@ -70,7 +70,7 @@ class EventDetailedViewController: UIViewController {
                     
                 do {
                     try store.save(event, span: .thisEvent)
-                    let alert = UIAlertController(title: "Event", message: "Event Successfully Added to Calendar", preferredStyle: .alert)
+                    let alert = UIAlertController(title: "Calendar", message: "Event Successfully Added to Calendar", preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
                     self.present(alert, animated: true, completion: nil)
                 }
