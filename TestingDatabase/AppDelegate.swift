@@ -93,14 +93,47 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate{
             "Users" : userId!,
             "PhoneNumber" : phoneNumber
         ]
-        database.child("Users/\(userId!)").setValue(object)
+        database.child("Users/\(userId!)").observeSingleEvent(of: .value) { (snap) in
+            if (!snap.exists()){
+                database.child("Users/\(userId!)").setValue(object)
 
-        currentId = userId!
-        currentemail = email!
-        currentname = fullName!
-        currentPhone = phoneNumber
-        currentGoogleId = idToken!
-        currentUsers = userId!
+                currentId = userId!
+                currentemail = email!
+                currentname = fullName!
+                currentPhone = phoneNumber
+                currentGoogleId = idToken!
+                currentUsers = userId!
+
+            }
+            else{
+                 //   Database.database().reference().child("Users/\(userId!)").observe(.value, with: { (snapshot) in
+                    if let dict = snap.value as? [String : Any]{ //casting as anyobject
+                       let ekeys = dict.keys
+                       // self.connections = []
+                            let User = Connection()
+                            
+                            User.setValuesForKeys(dict as! [String : Any]) // set to dict
+                    //        self.connections.append(User)
+                            currentId = userId!
+                            currentemail = User.Email
+                            currentname = User.name
+                            currentPhone = User.PhoneNumber
+                            currentGoogleId = idToken!
+                            currentUsers = userId!
+                        
+                    }
+                  //      self.connectionCV.reloadData()
+               // }, withCancel: nil)
+            }
+        }
+    
+//        currentId = userId!
+//        currentemail = email!
+//        currentname = fullName!
+//        currentPhone = phoneNumber
+//        currentGoogleId = idToken!
+//        currentUsers = userId!
+        // check there is a child and if so don't overwrite
         //adding user data to be also replace with the google ids and possibly merged as one
     }
     // keep the userid
