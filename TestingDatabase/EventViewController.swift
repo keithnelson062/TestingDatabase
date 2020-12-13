@@ -96,7 +96,11 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
             print(self.events)
             self.eventCV.reloadData()
     }, withCancel: nil)
+        
+        
 }
+    
+
     /*
     // MARK: - Navigation
     // In a storyboard-based application, you will often want to do a little preparation before navigation
