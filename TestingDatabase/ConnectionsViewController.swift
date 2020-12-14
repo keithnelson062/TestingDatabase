@@ -10,7 +10,7 @@ import UIKit
 import FirebaseDatabase
 import FirebaseCore
 
-class ConnectionsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class ConnectionsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate {
     @IBOutlet weak var navigation: UINavigationItem!
     @IBOutlet weak var connectionCV: UICollectionView!
     var connections: [Connection] = []
@@ -25,6 +25,7 @@ class ConnectionsViewController: UIViewController, UICollectionViewDelegate, UIC
     func setupCollectionView() {
         connectionCV.dataSource = self
         connectionCV.delegate = self
+        searchusers.delegate = self
          DispatchQueue.global(qos: .userInitiated).async {
                 self.loadusers()
                 DispatchQueue.main.async {
@@ -80,7 +81,39 @@ class ConnectionsViewController: UIViewController, UICollectionViewDelegate, UIC
                 self.connectionCV.reloadData()
         }, withCancel: nil)
     }
-
+    
+    @IBOutlet weak var searchusers: UISearchBar!
+    
+    func search(query: String) {
+      
+        //spinner.startAnimating()
+        let ref = Database.database().reference()
+            ref.child("Users").observe(.value, with: { (snapshot) in
+            if let dict = snapshot.value as? [String : Any]{ //casting as anyobject
+               let ekeys = dict.keys
+               // self.events = []
+                for x in ekeys {
+                  //  let event = Event() // creating new event object
+                   // event.setValuesForKeys(dict[x]! as! [String : Any])
+                     let post = ref.child("Users").queryOrdered(byChild: "\(x)/name")
+                    // set to dict
+                    print(post)
+              //      self.events.append(event)
+                }
+            }
+             //   print(self.events)
+             //   self.eventCV.reloadData()
+        }, withCancel: nil)
+    
+    }
+       func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+                          let delay = 1
+                          DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(delay)) {
+                               self.search(query: searchBar.text!)
+                                   self.connectionCV.reloadData()
+                             }
+    
+       }
     /*
     // MARK: - Navigation
 
