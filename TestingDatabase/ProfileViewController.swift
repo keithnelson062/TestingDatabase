@@ -16,7 +16,6 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var email: UILabel!
     @IBOutlet weak var phoneNumber: UILabel!
     @IBOutlet weak var profileDescription: UITextView!
-    
     override func viewDidLoad() {
         var nowUser = Connection()
         super.viewDidLoad()

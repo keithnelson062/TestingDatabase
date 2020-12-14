@@ -231,6 +231,11 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0l1-M0-TGa">
+                                <rect key="frame" x="0.0" y="88" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="6hx-kw-82K"/>
@@ -239,6 +244,7 @@
                     <connections>
                         <outlet property="connectionCV" destination="TXr-aA-i8g" id="tKW-4u-ofd"/>
                         <outlet property="navigation" destination="wm1-5U-fxg" id="rEk-8d-Vyy"/>
+                        <outlet property="search" destination="0l1-M0-TGa" id="rul-F0-FRy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1hV-J0-sjp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
