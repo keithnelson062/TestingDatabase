@@ -22,30 +22,26 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
 
         Database.database().reference().child("Users/\(currentId)").observe(.value, with: { (snapshot) in
-                  if let dict = snapshot.value as? [String : Any]{ //casting as anyobject
-                     let ekeys = dict.keys
-                        nowUser = Connection()
-                          nowUser.setValuesForKeys(dict as! [String : Any]) // set to dict
-                    self.email.text = nowUser.Email!
-                    self.name.text = nowUser.name!
-                    self.profileDescription.text = nowUser.Profile_Des!
-                    self.phoneNumber.text = nowUser.PhoneNumber!
-                      
-                  }
-              }, withCancel: nil)
+          if let dict = snapshot.value as? [String : Any]{ //casting as anyobject
+            _ = dict.keys
+                nowUser = Connection()
+            nowUser.setValuesForKeys(dict) // set to dict
+            self.email.text = nowUser.Email!
+            self.name.text = nowUser.name!
+            self.profileDescription.text = nowUser.Profile_Des!
+            self.phoneNumber.text = nowUser.PhoneNumber!
+              
+          }
+        }, withCancel: nil)
 
     }
     @IBAction func signout(_ sender: Any) {
         GIDSignIn.sharedInstance().signOut()
     }
     
-       
-//    @IBAction func editProfile(_ sender: Any) {
-//        performSegue(withIdentifier: "editProfile", sender: self)
-//    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "editProfile"){
-            if let detailedVC = segue.destination as? EditProfileViewController {
+            if segue.destination is EditProfileViewController {
             }
         }
     }

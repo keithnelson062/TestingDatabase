@@ -25,7 +25,6 @@ class LoginViewController: UIViewController, GIDSignInDelegate{
         
         
         // Sign in and collect data per user
-        // ***TODO*** - send data to the firebase database here
         func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!,
                   withError error: Error!) {
             self.performSegue(withIdentifier: "loginPress", sender: self)
@@ -43,8 +42,8 @@ class LoginViewController: UIViewController, GIDSignInDelegate{
             // keep userid to append events by and not repeat users so data does not make copyies
           let idToken = user.authentication.idToken // Safe to send to the server
           let fullName = user.profile.name
-          let givenName = user.profile.givenName
-          let familyName = user.profile.familyName
+            _ = user.profile.givenName
+            _ = user.profile.familyName
           let email = user.profile.email
           let phoneNumber = ""
           let database = Database.database().reference()
@@ -72,33 +71,20 @@ class LoginViewController: UIViewController, GIDSignInDelegate{
 
                 }
                 else{
-                     //   Database.database().reference().child("Users/\(userId!)").observe(.value, with: { (snapshot) in
-                        if let dict = snap.value as? [String : Any]{ //casting as anyobject
-                           let ekeys = dict.keys
-                           // self.connections = []
-                                let User = Connection()
-                                
-                                User.setValuesForKeys(dict as! [String : Any]) // set to dict
-                        //        self.connections.append(User)
-                                currentId = userId!
-                                currentemail = User.Email
-                                currentname = User.name
-                                currentPhone = User.PhoneNumber
-                                currentGoogleId = idToken!
-                                currentUsers = userId!
+                    if let dict = snap.value as? [String : Any]{ //casting as anyobject
+                        _ = dict.keys
+                            let User = Connection()
                             
-                        }
-                      //      self.connectionCV.reloadData()
-                   // }, withCancel: nil)
+                        User.setValuesForKeys(dict) // set to dict
+                        currentId = userId!
+                        currentemail = User.Email
+                        currentname = User.name
+                        currentPhone = User.PhoneNumber
+                        currentGoogleId = idToken!
+                        currentUsers = userId!
+                    }
                 }
             }
-        
-    //        currentId = userId!
-    //        currentemail = email!
-    //        currentname = fullName!
-    //        currentPhone = phoneNumber
-    //        currentGoogleId = idToken!
-    //        currentUsers = userId!
             // check there is a child and if so don't overwrite
             //adding user data to be also replace with the google ids and possibly merged as one
             self.performSegue(withIdentifier: "loginPress", sender: self)

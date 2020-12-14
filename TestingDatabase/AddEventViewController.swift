@@ -23,7 +23,6 @@ class AddEventViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    //self.ref.child("users").child(user.uid).setValue(["username": username]) for adding users
     func getTime(sender:UIDatePicker) -> String
     {
         let formatter = DateFormatter()
@@ -60,7 +59,6 @@ class AddEventViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-// self.ref.child("users/\(user.uid)/username").setValue(username) for changing and updating usernames and profile info
     /*
     // MARK: - Navigation
 
