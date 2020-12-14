@@ -26,7 +26,6 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
         super.viewDidLoad()
         setupCollectionView()
         // Do any additional setup after loading the view.
-        print("viewDidLoad done")
     }
     
     func setupCollectionView() {
@@ -47,7 +46,6 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        print("cell")
         let cell = eventCV.dequeueReusableCell(withReuseIdentifier: "eventCell", for: indexPath) as! EventViewCell
         cell.setCell(name: events[indexPath.row].Eventname, description: events[indexPath.row].Summary)
         return cell
@@ -93,7 +91,6 @@ class EventViewController: UIViewController, UICollectionViewDataSource, UIColle
                 self.events.append(event)
             }
         }
-            print(self.events)
             self.eventCV.reloadData()
     }, withCancel: nil)
         

@@ -17,8 +17,6 @@ class ConnectionDetailedViewController: UIViewController{
     var desc:String = ""
     var profileImage: UIImage?
     
-    
-    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var phoneNumberLabel: UILabel!

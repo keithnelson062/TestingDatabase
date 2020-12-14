@@ -69,9 +69,9 @@ class ConnectionsViewController: UIViewController, UICollectionViewDelegate, UIC
             }
         }
     }
-        func loadusers(){
+    func loadusers(){
 
-            Database.database().reference().child("Users").observe(.value, with: { (snapshot) in
+        Database.database().reference().child("Users").observe(.value, with: { (snapshot) in
             if let dict = snapshot.value as? [String : Any]{ //casting as anyobject
                let ekeys = dict.keys
                 self.connections = []
@@ -81,7 +81,7 @@ class ConnectionsViewController: UIViewController, UICollectionViewDelegate, UIC
                     self.connections.append(User)
                 }
             }
-                self.connectionCV.reloadData()
+        self.connectionCV.reloadData()
         }, withCancel: nil)
     }
     
@@ -90,61 +90,28 @@ class ConnectionsViewController: UIViewController, UICollectionViewDelegate, UIC
     func searchs(query: String){
     self.connections = []
 
-     let databaseRef = Database.database().reference()
-    // databaseRef.child("Users").queryOrderedByKey().observe( .childAdded, with: { (snapshot) in
+    let databaseRef = Database.database().reference()
     databaseRef.child("Users").queryOrdered(byChild: "\(query)").observe( .childAdded, with: { (snapshot) in
-       if let dict = snapshot.value as? [String : Any] { //casting as anyobject
-           var ekeys = dict.keys
-           print(ekeys)
-           let User = Connection()
-            User.setValuesForKeys(dict as! [String : Any]) // set to dict
-        self.connections.append(User)
-        //self.newusers.append(User)
-        //print(branduser.name!)
-        for i in self.connections{
-        print(i)
-        }
-        self.connectionCV.reloadData()
-       }
-    
-         })
-    print("connections are here\(connections)")
+           if let dict = snapshot.value as? [String : Any] { //casting as anyobject
+            _ = dict.keys
+            let User = Connection()
+            User.setValuesForKeys(dict) // set to dict
+            self.connections.append(User)
+            self.connectionCV.reloadData()
+           }
+        })
     }
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
          let delay = 1
-                                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(delay)) {
-                                    self.searchs(query: self.search.text!)
-                                           self.connectionCV.reloadData()
-                                     }
+         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(delay)) {
+            if let text = self.search.text {
+                if(text != "") {
+                    self.searchs(query: text)
+                    self.connectionCV.reloadData()
+                }
+            }
+         }
     }
-//        //spinner.startAnimating()
-//    Database.database().reference().child("Users").observe(.value, with: { (snapshot) in
-//            if let dict = snapshot.value as? [String : Any]{ //casting as anyobject
-//               let ekeys = dict.keys
-//               // self.events = []
-//                print(ekeys)
-////                for x in ekeys {
-////                  //  let event = Event() // creating new event object
-////                   // event.setValuesForKeys(dict[x]! as! [String : Any])
-////                     let post = ref.child("Users").queryOrdered(byChild: "\(x)/name")
-////                    // set to dict
-////                    print(post)
-////              //      self.events.append(event)
-////                }
-//            }
-//             //   print(self.events)
-//             //   self.eventCV.reloadData()
-//        }, withCancel: nil)
-//
-//    }
-//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-//                          let delay = 1
-//                          DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(delay)) {
-//                               self.search()
-//                                   self.connectionCV.reloadData()
-//                             }
-//
-//    }
     /*
     // MARK: - Navigation
 
@@ -158,13 +125,12 @@ class ConnectionsViewController: UIViewController, UICollectionViewDelegate, UIC
       let databaseRef = Database.database().reference()
       databaseRef.child("name").queryOrderedByKey().observe( .childAdded, with: { (snapshot) in
         if let dict = snapshot.value as? [String : Any] { //casting as anyobject
-        var branduser = Connection()
-            branduser.setValuesForKeys(dict as! [String : Any])
+            let branduser = Connection()
+            branduser.setValuesForKeys(dict)
             self.newusers.append(branduser)// set to dict
-            print(branduser.name!)
         }
      
-          })
+    })
     }
 
 }

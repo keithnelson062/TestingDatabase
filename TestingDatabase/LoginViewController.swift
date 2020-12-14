@@ -120,7 +120,6 @@ class LoginViewController: UIViewController, GIDSignInDelegate{
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if(segue.identifier == "loginPress") {
             if segue.destination is TabBarController {
-                print("done")
             }
         }
     }
