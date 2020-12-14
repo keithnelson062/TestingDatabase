@@ -40,7 +40,11 @@ class ProfileViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if (segue.identifier == "editProfile"){
-            if segue.destination is EditProfileViewController {
+            if let detailVC = segue.destination as? EditProfileViewController {
+                detailVC.desc = profileDescription.text
+                detailVC.email = email.text ?? ""
+                detailVC.name = name.text ?? ""
+                detailVC.phoneNumber = phoneNumber.text ?? ""
             }
         }
     }
