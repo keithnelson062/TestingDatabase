@@ -10,15 +10,17 @@ import UIKit
 import FirebaseDatabase
 import FirebaseCore
 
-class ConnectionsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource{
+class ConnectionsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UISearchBarDelegate{
     @IBOutlet weak var navigation: UINavigationItem!
     @IBOutlet weak var connectionCV: UICollectionView!
     var connections: [Connection] = []
+    var newusers: [Connection] = []
     var detailedVC = ConnectionDetailedViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCollectionView()
+        getPosts()
         // Do any additional setup after loading the view.
     }
     
@@ -32,6 +34,7 @@ class ConnectionsViewController: UIViewController, UICollectionViewDelegate, UIC
                     self.connectionCV.reloadData()
                 }
         }
+        search.delegate = self
         connectionCV.register(ConnectionViewCell.self, forCellWithReuseIdentifier: "connectionCell")
     }
     
@@ -82,38 +85,66 @@ class ConnectionsViewController: UIViewController, UICollectionViewDelegate, UIC
         }, withCancel: nil)
     }
     
-    @IBOutlet weak var searchusers: UISearchBar!
+    @IBOutlet weak var search: UISearchBar!
+    //@IBOutlet weak var usersearchBar: UISearchBar!
+    func searchs(query: String){
+    self.connections = []
+
+     let databaseRef = Database.database().reference()
+    // databaseRef.child("Users").queryOrderedByKey().observe( .childAdded, with: { (snapshot) in
+    databaseRef.child("Users").queryOrdered(byChild: "\(query)").observe( .childAdded, with: { (snapshot) in
+       if let dict = snapshot.value as? [String : Any] { //casting as anyobject
+           var ekeys = dict.keys
+           print(ekeys)
+           let User = Connection()
+            User.setValuesForKeys(dict as! [String : Any]) // set to dict
+        self.connections.append(User)
+        //self.newusers.append(User)
+        //print(branduser.name!)
+        for i in self.connections{
+        print(i)
+        }
+        self.connectionCV.reloadData()
+       }
     
-//    func search(query: String) {
-//
+         })
+    print("connections are here\(connections)")
+    }
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+         let delay = 1
+                                 DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(delay)) {
+                                    self.searchs(query: self.search.text!)
+                                           self.connectionCV.reloadData()
+                                     }
+    }
 //        //spinner.startAnimating()
-//        let ref = Database.database().reference()
-//            ref.child("Users").observe(.value, with: { (snapshot) in
+//    Database.database().reference().child("Users").observe(.value, with: { (snapshot) in
 //            if let dict = snapshot.value as? [String : Any]{ //casting as anyobject
 //               let ekeys = dict.keys
 //               // self.events = []
-//                for x in ekeys {
-//                  //  let event = Event() // creating new event object
-//                   // event.setValuesForKeys(dict[x]! as! [String : Any])
-//                     let post = ref.child("Users").queryOrdered(byChild: "\(x)/name")
-//                    // set to dict
-//                    print(post)
-//              //      self.events.append(event)
-//                }
+//                print(ekeys)
+////                for x in ekeys {
+////                  //  let event = Event() // creating new event object
+////                   // event.setValuesForKeys(dict[x]! as! [String : Any])
+////                     let post = ref.child("Users").queryOrdered(byChild: "\(x)/name")
+////                    // set to dict
+////                    print(post)
+////              //      self.events.append(event)
+////                }
 //            }
 //             //   print(self.events)
 //             //   self.eventCV.reloadData()
 //        }, withCancel: nil)
 //
 //    }
-//       func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
 //                          let delay = 1
 //                          DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(delay)) {
-//                               self.search(query: searchBar.text!)
+//                               self.search()
 //                                   self.connectionCV.reloadData()
 //                             }
 //
-//       }
+//    }
     /*
     // MARK: - Navigation
 
@@ -123,5 +154,17 @@ class ConnectionsViewController: UIViewController, UICollectionViewDelegate, UIC
         // Pass the selected object to the new view controller.
     }
     */
+    func getPosts() {
+      let databaseRef = Database.database().reference()
+      databaseRef.child("name").queryOrderedByKey().observe( .childAdded, with: { (snapshot) in
+        if let dict = snapshot.value as? [String : Any] { //casting as anyobject
+        var branduser = Connection()
+            branduser.setValuesForKeys(dict as! [String : Any])
+            self.newusers.append(branduser)// set to dict
+            print(branduser.name!)
+        }
+     
+          })
+    }
 
 }
